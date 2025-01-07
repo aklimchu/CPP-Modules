@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 09:06:17 by aklimchu          #+#    #+#              #
-#    Updated: 2025/01/07 13:25:44 by aklimchu         ###   ########.fr        #
+#    Updated: 2025/01/07 15:12:01 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ NAME		= myphonebook
 
 # Compiler
 C++ 		= c++
-CFLAGS		= -ggdb3 -Wall -Werror -Wextra -std=c++20
+CFLAGS		= -Wall -Werror -Wextra -std=c++20
 RM			= rm -f
 RMDIR		= rm -rf
 
