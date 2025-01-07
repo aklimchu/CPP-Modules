@@ -1,8 +1,84 @@
 #include "PhoneBook.class.hpp"
 #include "Contact.class.hpp"
 
+int	check_digits(std::string string)
+{
+	int length = string.length();
+	for (int i = 0; i < length; i++){
+		if (std::isdigit(string[i]) == 0)
+		{
+			std::cout << "The field can include only digits" << std::endl;
+			return 1;
+		}
+	}
+	return 0;
+}
+
 int	main(){
-	Contact instance1;
-	PhoneBook instance2;
+	PhoneBook	instance;
+	std::string	input;
+	std::string	first;
+	std::string	last;
+	std::string	nickname;
+	std::string	phone;
+	std::string	secret;
+
+	while (1)
+	{
+		std::cout << "Enter the request: ";
+		getline(std::cin, input);;
+		if (input.compare("ADD") == 0)
+		{
+			first.clear();
+			while (first.length() == 0)
+			{
+				std::cout << "Enter the first name: ";
+				getline(std::cin, first);
+				if (first.length() == 0)
+					std::cout << "Field can't be empty" << std::endl;
+			}
+			last.clear();
+			while (last.length() == 0)
+			{
+				std::cout << "Enter the last name: ";
+				getline(std::cin, last);
+				if (last.length() == 0)
+					std::cout << "Field can't be empty" << std::endl;
+			}
+			nickname.clear();
+			while (nickname.length() == 0)
+			{
+				std::cout << "Enter the nickname: ";
+				getline(std::cin, nickname);
+				if (nickname.length() == 0)
+					std::cout << "Field can't be empty" << std::endl;
+			}
+			phone.clear();
+			while (phone.length() == 0 || check_digits(phone) == 1)
+			{
+				std::cout << "Enter the phone number: ";
+				getline(std::cin, phone);
+				if (phone.length() == 0)
+					std::cout << "Field can't be empty" << std::endl;
+			}
+			secret.clear();
+			while (secret.length() == 0)
+			{
+				std::cout << "Enter the darkest secret: ";
+				getline(std::cin, secret);
+				if (secret.length() == 0)
+					std::cout << "Field can't be empty" << std::endl;
+			}
+			instance.add_new_contact(first, last, nickname, phone, secret);
+
+		}
+		else if (input.compare("SEARCH") == 0)
+		{
+			instance.print_all();
+			//which entry to display
+		}
+		else if (input.compare("EXIT") == 0)
+			exit (EXIT_SUCCESS);
+	}
 	return 0;
 }

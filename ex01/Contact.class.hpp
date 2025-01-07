@@ -5,6 +5,7 @@
 
 class Contact{
 	public:
+		int			index; // do we need to allocate?
 		std::string	first_name; // do we need to allocate?
 		std::string	last_name;
 		std::string	nickname;

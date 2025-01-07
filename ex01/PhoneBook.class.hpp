@@ -3,18 +3,18 @@
 
 #include "Contact.class.hpp"
 
-# include <iostream>
-
 class PhoneBook{
 	public:
 		Contact contact[8];
+		int		number_of_contacts = 0;
 		
 		PhoneBook(void); // what arguments?
 		~PhoneBook(void);
 
-		//add
-		//search
-		//exit
+		void	add_new_contact(std::string first, \
+			std::string last, std::string nickname, std::string phone, \
+			std::string secret);
+		void	print_all() const;
 	//private:
 };
 
