@@ -2,19 +2,20 @@
 # define CONTACT_CLASS_HPP
 
 # include <iostream>
+# include <sstream>
+# include <iomanip>
 
 class Contact{
 	public:
-		int			index; // do we need to allocate?
-		std::string	first_name; // do we need to allocate?
+		int			index;
+		std::string	first_name;
 		std::string	last_name;
 		std::string	nickname;
 		std::string	phone_number; // private?
 		std::string	darkest_secret; // private?
 
-		Contact(void); // what arguments?
+		Contact(void);
 		~Contact(void);
-	//private:
 };
 
 #endif

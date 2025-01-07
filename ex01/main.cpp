@@ -22,11 +22,13 @@ int	main(){
 	std::string	nickname;
 	std::string	phone;
 	std::string	secret;
+	std::string	entry_number;
 
 	while (1)
 	{
 		std::cout << "Enter the request: ";
-		getline(std::cin, input);;
+		input.clear();
+		getline(std::cin, input);
 		if (input.compare("ADD") == 0)
 		{
 			first.clear();
@@ -75,7 +77,13 @@ int	main(){
 		else if (input.compare("SEARCH") == 0)
 		{
 			instance.print_all();
-			//which entry to display
+			int print_entry_return = 1;
+			while (print_entry_return){
+				std::cout << "Enter the entry number to be displayed: ";
+				getline(std::cin, entry_number);
+				if (!check_digits(entry_number))
+					print_entry_return = instance.print_entry(std::stoi(entry_number) - 1);
+			}
 		}
 		else if (input.compare("EXIT") == 0)
 			exit (EXIT_SUCCESS);
