@@ -120,7 +120,7 @@ int	main(){
 					try {
 					print_entry_return = instance.print_entry(std::stoi(entry_number) - 1);
 					}
-					catch (std::out_of_range  &e) {
+					catch (...) {
 						std::cout << "Invalid Input" << std::endl;
 						return 1;
 					}
