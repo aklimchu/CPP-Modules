@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 09:06:17 by aklimchu          #+#    #+#              #
-#    Updated: 2025/01/08 16:58:50 by aklimchu         ###   ########.fr        #
+#    Updated: 2025/01/08 16:58:25 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 # Program name
-NAME		= zombie
+NAME		= hi
 
 # Compiler
 C++ 		= c++
@@ -31,10 +31,7 @@ RM			= rm -f
 RMDIR		= rm -rf
 
 # Source / OBJ files / Includes
-SRC 		=	main.cpp \
-				Zombie.cpp \
-				newZombie.cpp \
-				randomChamp.cpp
+SRC 		=	main.cpp
 OBJ 		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR		= obj
 INCLUDE		= -I "./"
@@ -52,14 +49,14 @@ $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 
 $(NAME):	$(OBJ_DIR) $(OBJ)
 	@$(C++) $(CFLAGS) $(OBJ) $(INCLUDE) -o $(NAME)
-	@echo "$(GREEN)SUCCESS, ZOMBIE IS READY $(DEF_COLOR)"
+	@echo "$(GREEN)SUCCESS, HI IS READY $(DEF_COLOR)"
 
 clean:
 	@echo "$(RED)Deleting object files... $(DEF_COLOR)"
 	@$(RMDIR) $(OBJ_DIR) 
 
 fclean:		clean
-	@echo "$(GREEN)Deleting zombie... $(DEF_COLOR)"
+	@echo "$(GREEN)Deleting hi... $(DEF_COLOR)"
 	@$(RMDIR) $(NAME)
 	@echo "$(GREEN)CLEAR $(DEF_COLOR)"
 
