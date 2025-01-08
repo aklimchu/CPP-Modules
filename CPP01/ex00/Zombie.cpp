@@ -1,7 +1,7 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie(){
-	return ;
+Zombie::Zombie(std::string name) : name(name) {
+    std::cout << "Zombie " << this->name << " is created." << std::endl;
 }
 
 void Zombie::announce( void ) const {
@@ -9,20 +9,6 @@ void Zombie::announce( void ) const {
 }
 
 Zombie::~Zombie(){
-	std::cout << this->name << ": destroyed" << std::endl;
+	std::cout << "Zombie " << this->name << " is destroyed." << std::endl;
 	return ;
-}
-
-Zombie* Zombie::newZombie( std::string name ){
-	Zombie	*zombie = new Zombie; // delete later?
-	
-	zombie->name = name;
-	return zombie;
-}
-
-void Zombie::randomChump( std::string name ){
-	Zombie	*zombie;
-	
-	zombie = newZombie(name);
-	announce();
 }

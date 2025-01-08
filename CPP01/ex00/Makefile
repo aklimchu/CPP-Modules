@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 09:06:17 by aklimchu          #+#    #+#              #
-#    Updated: 2025/01/08 12:58:15 by aklimchu         ###   ########.fr        #
+#    Updated: 2025/01/08 13:35:15 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ RMDIR		= rm -rf
 
 # Source / OBJ files / Includes
 SRC 		=	main.cpp \
-				Zombie.cpp
+				Zombie.cpp \
+				newZombie.cpp \
+				randomChamp.cpp
 OBJ 		= $(SRC:%.c=$(OBJ_DIR)/%.o)
 OBJ_DIR		= obj
 INCLUDE		= -I "./"
