@@ -36,7 +36,12 @@ int	main(){
 			{
 				std::cout << "Enter the first name: ";
 				getline(std::cin, first);
-				if (first.length() == 0)
+				if (std::cin.fail())
+				{
+                    std::cout << std::endl << "Invalid Input" << std::endl;
+					return 1;
+				}
+				else if (first.length() == 0)
 					std::cout << "Field can't be empty" << std::endl;
 			}
 			last.clear();
@@ -44,6 +49,11 @@ int	main(){
 			{
 				std::cout << "Enter the last name: ";
 				getline(std::cin, last);
+				if (std::cin.fail())
+				{
+                    std::cout << std::endl << "Invalid Input" << std::endl;
+					return 1;
+				}
 				if (last.length() == 0)
 					std::cout << "Field can't be empty" << std::endl;
 			}
@@ -52,6 +62,11 @@ int	main(){
 			{
 				std::cout << "Enter the nickname: ";
 				getline(std::cin, nickname);
+				if (std::cin.fail())
+				{
+                    std::cout << std::endl << "Invalid Input" << std::endl;
+					return 1;
+				}
 				if (nickname.length() == 0)
 					std::cout << "Field can't be empty" << std::endl;
 			}
@@ -60,6 +75,11 @@ int	main(){
 			{
 				std::cout << "Enter the phone number: ";
 				getline(std::cin, phone);
+				if (std::cin.fail())
+				{
+                    std::cout << std::endl << "Invalid Input" << std::endl;
+					return 1;
+				}
 				if (phone.length() == 0)
 					std::cout << "Field can't be empty" << std::endl;
 			}
@@ -68,6 +88,11 @@ int	main(){
 			{
 				std::cout << "Enter the darkest secret: ";
 				getline(std::cin, secret);
+				if (std::cin.fail())
+				{
+                    std::cout << std::endl << "Invalid Input" << std::endl;
+					return 1;
+				}
 				if (secret.length() == 0)
 					std::cout << "Field can't be empty" << std::endl;
 			}
@@ -81,8 +106,20 @@ int	main(){
 			while (print_entry_return){
 				std::cout << "Enter the entry number to be displayed: ";
 				getline(std::cin, entry_number);
-				if (!check_digits(entry_number))
+				if (std::cin.fail())
+				{
+                    std::cout << std::endl << "Invalid Input" << std::endl;
+					return 1;
+				}
+				if (!check_digits(entry_number)){
+					try {
 					print_entry_return = instance.print_entry(std::stoi(entry_number) - 1);
+					}
+					catch (std::out_of_range  &e) {
+						std::cout << "Invalid Input" << std::endl;
+						return 1;
+					}
+				}
 			}
 		}
 		else if (input.compare("EXIT") == 0)
