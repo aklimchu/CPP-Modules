@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 09:06:17 by aklimchu          #+#    #+#              #
-#    Updated: 2025/01/06 10:31:12 by aklimchu         ###   ########.fr        #
+#    Updated: 2025/01/08 09:32:40 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ RMDIR		= rm -rf
 
 # Source / OBJ files / Includes
 SRC 		=	megaphone.cpp
-OBJ 		= $(SRC:%.c=$(OBJ_DIR)/%.o)
+OBJ 		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR		= obj
 INCLUDE		= -I "./"
 
@@ -43,7 +43,7 @@ all:	$(NAME)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@mkdir -p $(dir $@)
 	@$(C++) $(CFLAGS) $(INCLUDE) -c $< -o $@
 

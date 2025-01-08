@@ -49,12 +49,8 @@ void	PhoneBook::print_all() const{
 			short_str.push_back('.');
 		}
 		else
-		{
-			for (int i = 0; i < 10 - word_length; i++)
-				short_str.push_back(' ');
-			short_str += index_str;
-		}
-		std::cout << "|" << short_str;
+			short_str = index_str;
+		std::cout << "|" << std::setw(10) << short_str;
 
 		short_str.clear();
 		word_length = this->contact[i].first_name.length();
@@ -64,12 +60,8 @@ void	PhoneBook::print_all() const{
 			short_str.push_back('.');
 		}
 		else
-		{
-			for (int i = 0; i < 10 - word_length; i++)
-				short_str.push_back(' ');
-			short_str += this->contact[i].first_name;
-		}
-		std::cout << "|" << short_str;
+			short_str = this->contact[i].first_name;
+		std::cout << "|" << std::setw(10) << short_str;
 
 		short_str.clear();
 		word_length = this->contact[i].last_name.length();
@@ -79,12 +71,8 @@ void	PhoneBook::print_all() const{
 			short_str.push_back('.');
 		}
 		else
-		{
-			for (int i = 0; i < 10 - word_length; i++)
-				short_str.push_back(' ');
-			short_str += this->contact[i].last_name;
-		}
-		std::cout << "|" << short_str;
+			short_str = this->contact[i].last_name;
+		std::cout << "|" << std::setw(10) << short_str;
 
 		short_str.clear();
 		word_length = this->contact[i].nickname.length();
@@ -94,12 +82,8 @@ void	PhoneBook::print_all() const{
 			short_str.push_back('.');
 		}
 		else
-		{
-			for (int i = 0; i < 10 - word_length; i++)
-				short_str.push_back(' ');
-			short_str += this->contact[i].nickname;
-		}
-		std::cout << "|" << short_str << "|" << std::endl;
+			short_str = this->contact[i].nickname;
+		std::cout << "|" << std::setw(10) << short_str << "|" << std::endl;
 
 		std::cout << "|----------|----------|----------|----------|" << std::endl;
 	}
