@@ -29,6 +29,11 @@ int	main(){
 		std::cout << "Enter the request: ";
 		input.clear();
 		getline(std::cin, input);
+		if (std::cin.fail())
+		{
+            std::cout << std::endl << "Invalid Input" << std::endl;
+			return 1;
+		}
 		if (input.compare("ADD") == 0)
 		{
 			first.clear();
