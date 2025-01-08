@@ -4,7 +4,7 @@ Zombie::Zombie(){
 	return ;
 }
 
-void Zombie::announce( void ){
+void Zombie::announce( void ) const {
 	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
@@ -14,15 +14,15 @@ Zombie::~Zombie(){
 }
 
 Zombie* Zombie::newZombie( std::string name ){
-	Zombie	instance;
+	Zombie	*zombie = new Zombie; // delete later?
 	
-	instance.name = name;
-	return &instance;
+	zombie->name = name;
+	return zombie;
 }
 
 void Zombie::randomChump( std::string name ){
-	Zombie	*instance;
+	Zombie	*zombie;
 	
-	instance = newZombie(name);
-	announce ;
+	zombie = newZombie(name);
+	announce();
 }
