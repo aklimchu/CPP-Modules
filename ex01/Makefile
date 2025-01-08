@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 09:06:17 by aklimchu          #+#    #+#              #
-#    Updated: 2025/01/08 09:32:14 by aklimchu         ###   ########.fr        #
+#    Updated: 2025/01/08 12:46:44 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ RMDIR		= rm -rf
 
 # Source / OBJ files / Includes
 SRC 		=	main.cpp \
-				PhoneBook.class.cpp \
-				Contact.class.cpp
+				PhoneBook.cpp \
+				Contact.cpp
 OBJ 		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR		= obj
 INCLUDE		= -I "./"
