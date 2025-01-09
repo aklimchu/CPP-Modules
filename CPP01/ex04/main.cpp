@@ -1,12 +1,12 @@
 # include <iostream>
 # include <fstream>
 
-void open_files(std::ifstream& input_stream, std::string infile_name, \
+int open_files(std::ifstream& input_stream, std::string infile_name, \
 	std::ofstream& output_stream){
 	input_stream.open(infile_name, std::ifstream::in);
 	if (!input_stream){
 		std::cerr << "Can't open input file" << std::endl;
-		exit (1);
+		return (1);
 	}
 	std::string new_file = infile_name + ".replace";
 
@@ -14,7 +14,7 @@ void open_files(std::ifstream& input_stream, std::string infile_name, \
 
 	if (!output_stream){
 		std::cerr << "Can't create output file" << std::endl;
-		exit (1);
+		return (1);
 	}
 }
 
@@ -43,7 +43,8 @@ int	main(int argc, char **argv) {
 	std::ifstream input_stream;
 	std::ofstream output_stream;
 
-	open_files(input_stream, (std::string)argv[1], output_stream);
+	if (open_files(input_stream, (std::string)argv[1], output_stream) == 1)
+		return 1;
 
 	std::string line;
 	std::string new_line;
