@@ -26,7 +26,7 @@ int	main(){
 
 	while (1)
 	{
-		std::cout << "Enter the request: ";
+		std::cout << "Enter ADD, SEARCH or EXIT: ";
 		input.clear();
 		getline(std::cin, input);
 		if (std::cin.fail())
@@ -107,23 +107,20 @@ int	main(){
 		else if (input.compare("SEARCH") == 0)
 		{
 			instance.print_all();
-			int print_entry_return = 1;
-			while (print_entry_return){
-				std::cout << "Enter the entry number to be displayed: ";
-				getline(std::cin, entry_number);
-				if (std::cin.fail())
-				{
-                    std::cout << std::endl << "Invalid Input" << std::endl;
-					return 1;
+			std::cout << "Enter the entry number to be displayed: ";
+			getline(std::cin, entry_number);
+			if (std::cin.fail())
+			{
+                std::cout << std::endl << "Invalid Input" << std::endl;
+				return 1;
+			}
+			if (!check_digits(entry_number)){
+				try {
+					instance.print_entry(std::stoi(entry_number) - 1);
 				}
-				if (!check_digits(entry_number)){
-					try {
-					print_entry_return = instance.print_entry(std::stoi(entry_number) - 1);
-					}
-					catch (...) {
-						std::cout << "Invalid Input" << std::endl;
-						return 1;
-					}
+				catch (...) {
+					std::cout << "Invalid Input" << std::endl;
+					return 1;
 				}
 			}
 		}
