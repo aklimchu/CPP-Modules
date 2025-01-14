@@ -111,16 +111,14 @@ int	main(){
 			getline(std::cin, entry_number);
 			if (std::cin.fail())
 			{
-                std::cout << std::endl << "Invalid Input" << std::endl;
-				return 1;
+               	std::cout << std::endl << "Invalid Input" << std::endl;
 			}
-			if (!check_digits(entry_number)){
+			else if (!check_digits(entry_number)){
 				try {
 					instance.print_entry(std::stoi(entry_number) - 1);
 				}
 				catch (...) {
 					std::cout << "Invalid Input" << std::endl;
-					return 1;
 				}
 			}
 		}
