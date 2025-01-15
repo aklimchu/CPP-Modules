@@ -26,7 +26,11 @@ class Fixed {
 		Fixed operator-(Fixed const & rhs) const;
 		Fixed operator*(Fixed const & rhs) const;
 		Fixed operator/(Fixed const & rhs) const;
-		//+++++ pre-post in-decrement operators
+
+		Fixed &operator++();       // Pre-increment
+   		Fixed operator++(int);     // Post-increment
+    	Fixed &operator--();       // Pre-decrement
+    	Fixed operator--(int);     // Post-decrement
 
 		static Fixed & min ( Fixed & lhs, Fixed & rhs);
 		static const Fixed & min ( const Fixed & lhs, const Fixed & rhs);

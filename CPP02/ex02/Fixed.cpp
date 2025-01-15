@@ -104,7 +104,32 @@ Fixed Fixed::operator*(Fixed const & rhs) const {
 Fixed Fixed::operator/(Fixed const & rhs) const {
 	return Fixed(this->toFloat() / rhs.toFloat());
 }
-//+++++ pre-post in-decrement operators
+
+// Pre-increment
+Fixed & Fixed::operator++() {
+	this->rawBits++;
+	return *this;
+}
+
+// Post-increment
+Fixed Fixed::operator++(int) {
+	Fixed original (*this);
+	this->rawBits++;
+	return original;
+}
+
+// Pre-decrement
+Fixed & Fixed::operator--() {
+	this->rawBits--;
+	return *this;
+}
+
+// Post-decrement
+Fixed Fixed::operator--(int) {
+	Fixed original (*this);
+	this->rawBits--;
+	return original;
+}
 
 Fixed & Fixed::min ( Fixed & lhs, Fixed & rhs) {
 	if (lhs.toFloat() <= rhs.toFloat())
