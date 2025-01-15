@@ -8,13 +8,11 @@ Fixed::Fixed () : rawBits (0) {
 }
 
 Fixed::Fixed(const int n_int) {
-//do we need overflow check?
 	std::cout << "Int constructor called" << std::endl;
 	this->rawBits = n_int << this->fractionalBits;
 }
 
 Fixed::Fixed(const float n_float) {
-//do we need overflow check?
 	std::cout << "Float constructor called" << std::endl;
 	this->rawBits = roundf(n_float * (1 << this->fractionalBits));
 }
