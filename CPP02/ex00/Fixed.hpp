@@ -1,3 +1,5 @@
+// 42 header
+
 #pragma once
 
 #include <iostream>
@@ -5,14 +7,15 @@
 class Fixed {
 	public:
 		Fixed(void); //Canonical
-		Fixed(int const n);
 		Fixed(Fixed const & src); // Canonical
 		~Fixed(void); // Canonical
 
 		Fixed & operator=(Fixed const & rhs); // Canonical
 
-		int	getFoo(void) const;
+		int getRawBits( void ) const;
+		void setRawBits( int const raw );
 
 	private:
-		int	_foo;
+		int	rawBits;
+		static const int fractionalBits = 8;
 };
