@@ -16,6 +16,7 @@ int open_files(std::ifstream& input_stream, std::string infile_name, \
 		std::cerr << "Can't create output file" << std::endl;
 		return (1);
 	}
+	return (0);
 }
 
 void replace_loop(std::string &new_line, std::string s1, std::string s2) {

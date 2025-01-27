@@ -4,13 +4,13 @@
 
 class Harl
 {
+public:
+	Harl();
+	~Harl();
+	void filter( std::string level );
 private:
 	void debug( void );
 	void info( void );
 	void warning( void );
 	void error( void );
-public:
-	Harl(/* args */);
-	~Harl();
-	void filter( std::string level );
 };

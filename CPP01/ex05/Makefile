@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 09:06:17 by aklimchu          #+#    #+#              #
-#    Updated: 2025/01/09 16:43:23 by aklimchu         ###   ########.fr        #
+#    Updated: 2025/01/27 10:31:02 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ WHITE = \033[0;97m
 NAME		= replace
 
 # Compiler
-C++ 		= c++
+C++ 		= g++
 CFLAGS		= -Wall -Werror -Wextra -std=c++20
 RM			= rm -f
 RMDIR		= rm -rf

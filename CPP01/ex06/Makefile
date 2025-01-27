@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 09:06:17 by aklimchu          #+#    #+#              #
-#    Updated: 2025/01/09 16:58:53 by aklimchu         ###   ########.fr        #
+#    Updated: 2025/01/27 10:36:38 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 # Program name
-NAME		= harlFilter
+NAME		= harl_filter
 
 # Compiler
 C++ 		= c++
@@ -50,14 +50,14 @@ $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 
 $(NAME):	$(OBJ_DIR) $(OBJ)
 	@$(C++) $(CFLAGS) $(OBJ) $(INCLUDE) -o $(NAME)
-	@echo "$(GREEN)SUCCESS, HARLFILTER IS READY $(DEF_COLOR)"
+	@echo "$(GREEN)SUCCESS, HARL_FILTER IS READY $(DEF_COLOR)"
 
 clean:
 	@echo "$(RED)Deleting object files... $(DEF_COLOR)"
 	@$(RMDIR) $(OBJ_DIR) 
 
 fclean:		clean
-	@echo "$(GREEN)Deleting harlFilter... $(DEF_COLOR)"
+	@echo "$(GREEN)Deleting harl_filter... $(DEF_COLOR)"
 	@$(RMDIR) $(NAME)
 	@echo "$(GREEN)CLEAR $(DEF_COLOR)"
 
