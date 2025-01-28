@@ -18,7 +18,7 @@ int main()
 	int	array_elem = 10;
 	AAnimal *AAnimals[array_elem];
 
-	// Checking if we can create instances of base class AAnimal
+	// Checking if we can instantiate base class AAnimal
 	//AAnimal AAnimal;
 
     // Allocate memory for the AAnimals
