@@ -26,6 +26,8 @@ class Cat : public Animal
 		Cat & operator=(Cat const & rhs); // Canonical
 		
 		virtual void makeSound( void ) const;
+		void setCatIdeas(int i, std::string new_idea);
+		std::string getCatIdeas(int i) const;
 
 		Brain *cat_brain;
 };

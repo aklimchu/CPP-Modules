@@ -14,12 +14,12 @@
 
 //--------------------------------Constructors--------------------------------//
 
-Cat::Cat() {
+Cat::Cat() : Animal () {
 	std::cout << "Default constructor Cat called" << std::endl << std::endl;
 	type = "Cat";
 }
 
-Cat::Cat(Cat const & src) : Animal () {
+Cat::Cat(Cat const & src) : Animal (src) {
 	std::cout << "Copy constructor Cat called" << std::endl << std::endl;
 	*this = src;
 }
@@ -35,7 +35,7 @@ Cat::~Cat() {
 Cat & Cat::operator=(Cat const & rhs) {
 	std::cout << "Copy assignment operator Cat called" << std::endl << std::endl;
 	if (this != &rhs)
-		this->type = rhs.getType();
+		Animal::operator=(rhs);
 	return *this;
 }
 

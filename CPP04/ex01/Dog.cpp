@@ -14,15 +14,15 @@
 
 //--------------------------------Constructors--------------------------------//
 
-Dog::Dog() {
+Dog::Dog() : Animal() {
 	std::cout << "Default constructor Dog called" << std::endl << std::endl;
 	type = "Dog";
 	dog_brain = new Brain();
 }
 
-Dog::Dog(Dog const & src) : Animal () {
+Dog::Dog(Dog const & src) : Animal (src) {
 	std::cout << "Copy constructor Dog called" << std::endl << std::endl;
-	*this = src;
+	dog_brain = new Brain(*src.dog_brain);
 }
 
 //---------------------------------Destructor---------------------------------//
@@ -36,10 +36,13 @@ Dog::~Dog() {
 
 Dog & Dog::operator=(Dog const & rhs) {
 	std::cout << "Copy assignment operator Dog called" << std::endl << std::endl;
-	{
-		this->type = rhs.getType();
-		this->dog_brain = rhs.dog_brain;
-	}
+	if (this != &rhs) {
+        Animal::operator=(rhs);
+        if (dog_brain) {
+            delete dog_brain;
+        }
+        dog_brain = new Brain(*rhs.dog_brain);
+    }
 	return *this;
 }
 
@@ -47,4 +50,16 @@ Dog & Dog::operator=(Dog const & rhs) {
 
 void Dog::makeSound( void ) const {
 	std::cout << "Hauhauhau" << std::endl << std::endl;
+};
+
+void Dog::setDogIdeas(int i, std::string new_idea) {
+	if (i < 0 || i >= 100)
+		return ;
+	dog_brain->setIdeas(i, new_idea);
+};
+
+std::string Dog::getDogIdeas(int i) const {
+	if (i < 0 || i >= 100)
+		return "Invalid index";;
+	return (this->dog_brain->getIdeas(i));
 };

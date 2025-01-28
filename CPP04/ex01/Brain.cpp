@@ -16,11 +16,16 @@
 
 Brain::Brain() {
 	std::cout << "Default constructor Brain called" << std::endl << std::endl;
+	for (int i = 0; i < 100; i++) {
+        ideas[i] = "Empty idea";
+     }
 }
 
 Brain::Brain(Brain const & src) {
 	std::cout << "Copy constructor Brain called" << std::endl << std::endl;
-	*this = src;
+	for (int i = 0; i < 100; i++) {
+        ideas[i] = src.ideas[i];
+    }
 }
 
 //---------------------------------Destructor---------------------------------//
@@ -43,5 +48,13 @@ Brain & Brain::operator=(Brain const & rhs) {
 //-------------------------------Member functions------------------------------//
 
 std::string Brain::getIdeas(int i) const {
+	if (i < 0 || i >= 100)
+		return "Invalid index";;
 	return (this->ideas[i]);
+};
+
+void Brain::setIdeas(int i, std::string new_idea) {
+	if (i < 0 || i >= 100)
+		return ;
+	ideas[i] = new_idea;
 };

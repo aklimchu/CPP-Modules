@@ -14,12 +14,12 @@
 
 //--------------------------------Constructors--------------------------------//
 
-Dog::Dog() {
+Dog::Dog() : Animal () {
 	std::cout << "Default constructor Dog called" << std::endl << std::endl;
 	type = "Dog";
 }
 
-Dog::Dog(Dog const & src) : Animal () {
+Dog::Dog(Dog const & src) : Animal (src) {
 	std::cout << "Copy constructor Dog called" << std::endl << std::endl;
 	*this = src;
 }
@@ -35,7 +35,7 @@ Dog::~Dog() {
 Dog & Dog::operator=(Dog const & rhs) {
 	std::cout << "Copy assignment operator Dog called" << std::endl << std::endl;
 	if (this != &rhs)
-		this->type = rhs.getType();
+		Animal::operator=(rhs);
 	return *this;
 }
 

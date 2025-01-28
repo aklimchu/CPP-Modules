@@ -26,7 +26,9 @@ class Dog : public Animal
 		Dog & operator=(Dog const & rhs); // Canonical
 
 		virtual void makeSound( void ) const;
-	
+		void setDogIdeas(int i, std::string new_idea);
+		std::string getDogIdeas(int i) const;
+
 	private:
 		Brain *dog_brain;
 };

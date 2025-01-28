@@ -14,12 +14,12 @@
 
 //--------------------------------Constructors--------------------------------//
 
-WrongCat::WrongCat() {
+WrongCat::WrongCat() : WrongAnimal() {
 	std::cout << "Default constructor WrongCat called" << std::endl << std::endl;
 	type = "WrongCat";
 }
 
-WrongCat::WrongCat(WrongCat const & src) : WrongAnimal () {
+WrongCat::WrongCat(WrongCat const & src) : WrongAnimal (src) {
 	std::cout << "Copy constructor WrongCat called" << std::endl << std::endl;
 	*this = src;
 }
@@ -35,7 +35,7 @@ WrongCat::~WrongCat() {
 WrongCat & WrongCat::operator=(WrongCat const & rhs) {
 	std::cout << "Copy assignment operator WrongCat called" << std::endl << std::endl;
 	if (this != &rhs)
-		this->type = rhs.getType();
+		WrongAnimal::operator=(rhs);
 	return *this;
 }
 

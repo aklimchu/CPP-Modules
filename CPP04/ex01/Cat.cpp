@@ -14,15 +14,15 @@
 
 //--------------------------------Constructors--------------------------------//
 
-Cat::Cat() {
+Cat::Cat() : Animal() {
 	std::cout << "Default constructor Cat called" << std::endl << std::endl;
 	type = "Cat";
 	cat_brain = new Brain();
 }
 
-Cat::Cat(Cat const & src) : Animal () {
+Cat::Cat(Cat const & src) : Animal (src) {
 	std::cout << "Copy constructor Cat called" << std::endl << std::endl;
-	*this = src;
+	cat_brain = new Brain(*src.cat_brain);
 }
 
 //---------------------------------Destructor---------------------------------//
@@ -36,11 +36,13 @@ Cat::~Cat() {
 
 Cat & Cat::operator=(Cat const & rhs) {
 	std::cout << "Copy assignment operator Cat called" << std::endl << std::endl;
-	if (this != &rhs)
-	{
-		this->type = rhs.getType();
-		this->cat_brain = rhs.cat_brain;
-	}
+	if (this != &rhs) {
+        Animal::operator=(rhs);
+        if (cat_brain) {
+            delete cat_brain;
+        }
+        cat_brain = new Brain(*rhs.cat_brain);
+    }
 	return *this;
 }
 
@@ -48,4 +50,16 @@ Cat & Cat::operator=(Cat const & rhs) {
 
 void Cat::makeSound( void ) const {
 	std::cout << "Miauuuuu" << std::endl << std::endl;
+};
+
+void Cat::setCatIdeas(int i, std::string new_idea) {
+	if (i < 0 || i >= 100)
+		return ;
+	cat_brain->setIdeas(i, new_idea);
+};
+
+std::string Cat::getCatIdeas(int i) const {
+	if (i < 0 || i >= 100)
+		return "Invalid index";
+	return (this->cat_brain->getIdeas(i));
 };

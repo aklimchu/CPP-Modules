@@ -23,6 +23,7 @@ class Brain {
 		Brain & operator=(Brain const & rhs); // Canonical
 
 		std::string getIdeas(int i) const;
+		void setIdeas(int i, std::string new_idea);
 
 	private:
 		std::string ideas[100];
