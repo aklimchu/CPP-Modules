@@ -12,4 +12,5 @@ class Cure : public AMateria
 
 		Cure & operator=(Cure const & rhs); // Canonical
 
+		Cure* clone() const;
 };

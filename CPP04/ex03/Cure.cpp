@@ -28,3 +28,7 @@ Cure & Cure::operator=(Cure const & rhs) {
 }
 
 //-------------------------------Member functions------------------------------//
+Cure* Cure::clone() const {
+	Cure new_cure = *this;
+	return &new_cure;
+}

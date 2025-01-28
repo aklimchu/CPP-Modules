@@ -28,3 +28,8 @@ Ice & Ice::operator=(Ice const & rhs) {
 }
 
 //-------------------------------Member functions------------------------------//
+
+Ice* Ice::clone() const {
+	Ice new_ice = *this;
+	return &new_ice;
+}
