@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 08:32:53 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/01/29 08:32:57 by aklimchu         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:49:28 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int main( void ) {
 	std::cout << "Fixed( 5.05f ) / Fixed( 2 ) = " << Fixed( 5.05f ) / Fixed( 2 ) << std::endl << std::endl;
 	
 
-	std::cout << "a = " << a << std::endl;
+	std::cout << "  a = " << a << std::endl;
 	std::cout << "++a = " << ++a << std::endl;
-	std::cout << "a = " << a << std::endl;
+	std::cout << "  a = " << a << std::endl;
 	std::cout << "a++ = "<< a++ << std::endl;
-	std::cout << "a = " << a << std::endl;
+	std::cout << "  a = " << a << std::endl;
 	std::cout << "--a = " << --a << std::endl;
-	std::cout << "a = " << a << std::endl;
+	std::cout << "  a = " << a << std::endl;
 	std::cout << "a-- = "<< a-- << std::endl;
-	std::cout << "a = " << a << std::endl << std::endl;
+	std::cout << "  a = " << a << std::endl << std::endl;
 
 	std::cout << "a = " << a << std::endl;
 	std::cout << "b = " << b << std::endl << std::endl;
