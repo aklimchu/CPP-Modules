@@ -36,8 +36,6 @@ SRC 		=	main.cpp \
 				Character.cpp \
 				Cure.cpp \
 				Ice.cpp \
-				ICharacter.cpp \
-				IMateriaSource.cpp \
 				MateriaSource.cpp
 OBJ 		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR		= obj

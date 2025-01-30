@@ -10,7 +10,7 @@ class Ice : public AMateria
 		Ice(Ice const & src); // Canonical
 		~Ice(void); // Canonical
 
-		Ice & operator=(Ice const & rhs); // Canonical
+		Ice & operator=(Ice const & rhs) = default; // Canonical
 
 		Ice* clone() const;
 		void use(ICharacter& target);

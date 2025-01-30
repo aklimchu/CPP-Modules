@@ -5,7 +5,7 @@
 
 class AMateria {
 	protected:
-		std::string type;
+		const std::string type;
 	
 	public:
 		AMateria(void); // Canonical
@@ -13,7 +13,7 @@ class AMateria {
 		AMateria(AMateria const & src); // Canonical
 		virtual ~AMateria(void); // Canonical
 
-		AMateria & operator=(AMateria const & rhs); // Canonical
+		AMateria & operator=(AMateria const & rhs)=delete; // Canonical
 
 		std::string const & getType() const;
 		virtual AMateria* clone() const = 0;

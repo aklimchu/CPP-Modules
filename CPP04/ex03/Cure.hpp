@@ -10,8 +10,9 @@ class Cure : public AMateria
 		Cure(Cure const & src); // Canonical
 		~Cure(void); // Canonical
 
-		Cure & operator=(Cure const & rhs); // Canonical
+		Cure & operator=(Cure const & rhs) = default; // Canonical
 
 		Cure* clone() const;
 		void use(ICharacter& target);
+
 };

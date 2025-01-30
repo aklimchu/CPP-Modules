@@ -2,14 +2,12 @@
 
 //--------------------------------Constructors--------------------------------//
 
-Ice::Ice() : AMateria() {
+Ice::Ice() : AMateria("ice") {
 	std::cout << "Default constructor Ice called" << std::endl << std::endl;
-	type = "ice";
 }
 
 Ice::Ice(Ice const & src) : AMateria(src) {
 	std::cout << "Copy constructor Ice called" << std::endl << std::endl;
-	type = src.type;
 }
 
 //---------------------------------Destructor---------------------------------//
@@ -20,20 +18,13 @@ Ice::~Ice() {
 
 //-------------------------Copy assignment operator---------------------------//
 
-Ice & Ice::operator=(Ice const & rhs) {
-	std::cout << "Copy assignment operator Ice called" << std::endl << std::endl;
-	if (this != &rhs)
-		AMateria::operator=(rhs);
-	return *this;
-}
 
 //-------------------------------Member functions------------------------------//
 
 Ice* Ice::clone() const {
-	Ice new_ice = *this;
-	return &new_ice;
+	return new Ice(*this);
 }
 
 void Ice::use(ICharacter& target) {
-	std::cout << "* shoots an ice bolt at " << "<name>" << " *" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

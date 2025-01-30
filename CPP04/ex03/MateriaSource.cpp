@@ -2,24 +2,28 @@
 
 //--------------------------------Constructors--------------------------------//
 
-MateriaSource::MateriaSource() : IMateriaSource() {
+MateriaSource::MateriaSource() : IMateriaSource(), slots_taken(0) {
 	std::cout << "Default constructor MateriaSource called" << std::endl << std::endl;
 }
 
-MateriaSource::MateriaSource(MateriaSource const & src) : IMateriaSource(src) { 
+MateriaSource::MateriaSource(MateriaSource const & src) : slots_taken(0) { 
 	std::cout << "Copy constructor MateriaSource called" << std::endl << std::endl;
 	this->slots_taken = src.slots_taken;
-	if (source_slots)
-		delete[] source_slots;
-	for (int i = 0; i < slots_taken; i++)
-		this->source_slots[i] = src.source_slots[i];
+	for (int i = 0; i < 4; i++) {
+		if (src.source_slots[i])
+			source_slots[i] = src.source_slots[i]->clone(); // Create new copy
+		else
+			source_slots[i] = nullptr;
+	}
 }
 
 //---------------------------------Destructor---------------------------------//
 
 MateriaSource::~MateriaSource() {
 	std::cout << "Destructor MateriaSource called" << std::endl << std::endl;
-	delete[] source_slots;
+	for (int i = 0; i < 4; i++) {
+		delete source_slots[i];
+	}
 }
 
 //-------------------------Copy assignment operator---------------------------//
@@ -28,12 +32,17 @@ MateriaSource & MateriaSource::operator=(MateriaSource const & rhs) {
 	std::cout << "Copy assignment operator Character called" << std::endl << std::endl;
 	if (this != &rhs)
 	{
-		IMateriaSource::operator=(rhs);
 		this->slots_taken = rhs.slots_taken;
-		if (source_slots)
-			delete[] source_slots;
-		for (int i = 0; i < slots_taken; i++)
-			this->source_slots[i] = rhs.source_slots[i];
+		for (int i = 0; i < 4; i++) {
+			if (this->source_slots[i]) {
+				delete this->source_slots[i]; // delete old Materia objects
+			}
+			if (rhs.source_slots[i]) {
+				this->source_slots[i] = rhs.source_slots[i]->clone(); // Clone new Materia objects
+			} else {
+				this->source_slots[i] = nullptr;
+			}
+		}
 	}
 	return *this;
 }
@@ -46,7 +55,7 @@ void MateriaSource::learnMateria(AMateria* to_learn) {
 		std::cout << "MateriaSource memory is full" << std::endl;
 		return ;
 	}
-	this->source_slots[slots_taken] = to_learn;
+	this->source_slots[slots_taken] = to_learn->clone();
 	this->slots_taken++;
 }
 
@@ -54,11 +63,7 @@ AMateria* MateriaSource::createMateria(std::string const & type) {
 	for (int i = 0; i < this->slots_taken; i++)
 	{
 		if ((*this).source_slots[i]->getType() == type)
-		{
-			AMateria *new_copy;
-			new_copy = source_slots[i];
-			return (new_copy);
-		}
+			return this->source_slots[i]->clone();
 	}
-	return 0;
+	return nullptr;
 }

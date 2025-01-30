@@ -12,9 +12,8 @@ AMateria::AMateria(std::string const & type) : type(type) {
 	return;
 }
 
-AMateria::AMateria(AMateria const & src) {
+AMateria::AMateria(AMateria const & src) : type(type) {
 	std::cout << "Copy constructor AMateria called" << std::endl;
-	type = src.type;
 	return;
 }
 
@@ -26,13 +25,6 @@ AMateria::~AMateria() {
 }
 
 //-------------------------Copy assignment operator---------------------------//
-
-AMateria & AMateria::operator=(AMateria const & rhs) {
-	std::cout << "Copy assignment operator AMateria called" << std::endl;
-	if (this != &rhs)
-		this->type = rhs.getType();
-	return *this;
-}
 
 //-------------------------------Member functions------------------------------//
 

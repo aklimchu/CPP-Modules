@@ -2,14 +2,12 @@
 
 //--------------------------------Constructors--------------------------------//
 
-Cure::Cure() : AMateria() {
+Cure::Cure() : AMateria("cure") {
 	std::cout << "Default constructor Cure called" << std::endl << std::endl;
-	type = "ice";
 }
 
 Cure::Cure(Cure const & src) : AMateria(src) {
 	std::cout << "Copy constructor Cure called" << std::endl << std::endl;
-	type = src.type;
 }
 
 //---------------------------------Destructor---------------------------------//
@@ -20,19 +18,11 @@ Cure::~Cure() {
 
 //-------------------------Copy assignment operator---------------------------//
 
-Cure & Cure::operator=(Cure const & rhs) {
-	std::cout << "Copy assignment operator Cure called" << std::endl << std::endl;
-	if (this != &rhs)
-		AMateria::operator=(rhs);
-	return *this;
-}
-
 //-------------------------------Member functions------------------------------//
 Cure* Cure::clone() const {
-	Cure new_cure = *this;
-	return &new_cure;
+	return new Cure(*this);
 }
 
 void Cure::use(ICharacter& target) {
-	std::cout << "* heals " << "<name>" << "’s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }
