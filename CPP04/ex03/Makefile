@@ -31,12 +31,12 @@ RM			= rm -f
 RMDIR		= rm -rf
 
 # Source / OBJ files / Includes
-SRC 		=	main.cpp \
-				AMateria.cpp \
-				Character.cpp \
+SRC 		=	AMateria.cpp \
 				Cure.cpp \
 				Ice.cpp \
-				MateriaSource.cpp
+				MateriaSource.cpp \
+				Character.cpp \
+				main.cpp
 OBJ 		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR		= obj
 INCLUDE		= -I "./"
