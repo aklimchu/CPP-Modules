@@ -3,6 +3,8 @@
 #include "Character.hpp"
 #include "MateriaSource.hpp"
 
+// add more tests
+
 int main()
 {
 	IMateriaSource* src = new MateriaSource();
@@ -16,11 +18,29 @@ int main()
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	me->unequip(0);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	me->unequip(3);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	me->unequip(10);
+
 
 	ICharacter* bob = new Character("bob");
 
 	me->use(0, *bob);
 	me->use(1, *bob);
+	
+	me->unequip(2);
+	me->use(2, *bob);
 
 	delete bob;
 	delete me;

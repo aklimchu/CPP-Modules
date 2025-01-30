@@ -3,6 +3,8 @@
 #include <iostream>
 #include "AMateria.hpp"
 
+class AMateria;
+
 class ICharacter {
 	public:
 		ICharacter(ICharacter const & src) = delete; // Canonical

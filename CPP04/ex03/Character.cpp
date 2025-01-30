@@ -2,58 +2,86 @@
 
 //--------------------------------Constructors--------------------------------//
 
-Character::Character() : ICharacter(), slots_taken(0) {
-	std::cout << "Default constructor Character called" << std::endl << std::endl;
+Character::Character() : ICharacter(), slots_taken(0), name("") {
+	//std::cout << "Default constructor Character called" << std::endl << std::endl;
+	for (int i = 0; i < 4; i++)
+        materia_slots[i] = nullptr;
+	for (int i = 0; i < 1024; i++)
+		materia_on_the_floor[i] = nullptr;
 }
 
 Character::Character(std::string name) : ICharacter(), slots_taken(0), name(name) {
-	std::cout << "Parametric constructor Character called" << std::endl << std::endl;
+	//std::cout << "Parametric constructor Character called" << std::endl << std::endl;
+	for (int i = 0; i < 4; i++)
+        materia_slots[i] = nullptr;
+	for (int i = 0; i < 1024; i++)
+		materia_on_the_floor[i] = nullptr;
 }
 
 Character::Character(Character const & src) {
-	std::cout << "Copy constructor Character called" << std::endl << std::endl;
+	//std::cout << "Copy constructor Character called" << std::endl << std::endl;
 	this->name = src.name;
 	this->slots_taken = src.slots_taken;
-	if (materia_slots) {
-		for (int i = 0; i < 4; i++) {
-			delete materia_slots[i];
-		}
+	for (int i = 0; i < 4; i++) {
+		materia_slots[i] = nullptr;
 	}
 	for (int i = 0; i < 4; i++) {
 		if (src.materia_slots[i])
-			materia_slots[i] = src.materia_slots[i]->clone(); // Create new copy
+			materia_slots[i] = src.materia_slots[i]->clone();
 		else
 			materia_slots[i] = nullptr;
+	}
+	for (int i = 0; i < 1024; i++) {
+		if (src.materia_on_the_floor[i])
+			materia_on_the_floor[i] = src.materia_on_the_floor[i];
+		else
+			materia_on_the_floor[i] = nullptr;
 	}
 }
 
 //---------------------------------Destructor---------------------------------//
 
 Character::~Character() {
-	std::cout << "Destructor Character called" << std::endl << std::endl;
+	//std::cout << "Destructor Character called" << std::endl << std::endl;
 	for (int i = 0; i < 4; i++) {
-		delete materia_slots[i];
+		if (materia_slots[i]) {
+			delete materia_slots[i];
+			materia_slots[i] = nullptr;
+		}
+	}
+	for (int i = 0; i < 1024; i++) {
+		if (materia_on_the_floor[i]) {
+			delete materia_on_the_floor[i];
+			materia_on_the_floor[i] = nullptr;
+		}
 	}
 }
 
 //-------------------------Copy assignment operator---------------------------//
 
 Character & Character::operator=(Character const & rhs) {
-	std::cout << "Copy assignment operator Character called" << std::endl << std::endl;
+	//std::cout << "Copy assignment operator Character called" << std::endl << std::endl;
 	if (this != &rhs)
 	{
 		this->name = rhs.getName();
 		this->slots_taken = rhs.slots_taken; // do we need getter here?
-		if (materia_slots) {
-			for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 4; i++) {
+			if (materia_slots[i]) {
 				delete materia_slots[i];
+				materia_slots[i] = nullptr;
 			}
 		}
 		for (int i = 0; i < 4; i++) {
 			if (rhs.materia_slots[i])
-				materia_slots[i] = rhs.materia_slots[i]->clone(); // Create new copy
+				materia_slots[i] = rhs.materia_slots[i]->clone();
 			else
 				materia_slots[i] = nullptr;
+		}
+		for (int i = 0; i < 1024; i++) {
+			if (rhs.materia_on_the_floor[i])
+				materia_on_the_floor[i] = rhs.materia_on_the_floor[i];
+			else
+				materia_on_the_floor[i] = nullptr;
 		}
 	}
 	return *this;
@@ -72,15 +100,9 @@ void Character::equip(AMateria* m) {
 	}
 	if (slots_taken == 4) {
 		std::cout << "Inventory is full" << std::endl;
+		delete m;
 		return;
 	}
-	/* // Check if already equipped
-	for (int i = 0; i < 4; i++) {
-		if (materia_slots[i] == m) {
-			std::cout << "Materia already equipped" << std::endl;
-			return;
-		}
-	} */
 	for (int i = 0; i < 4; i++) {
 		if (!materia_slots[i]) {
 			materia_slots[i] = m;
@@ -91,19 +113,23 @@ void Character::equip(AMateria* m) {
 }
 
 void Character::unequip(int idx) {
-	// save memory address of unequipped Materia before calling unequip - to delete it later
-	if (idx < 0 || idx > 3 /* || idx > slots_taken - 1 */ || !materia_slots[idx])
+	if (idx < 0 || idx > 3 || !materia_slots[idx])
 	{
 		std::cout << "Trying to unequip unexisting Materia" << std::endl;
 		return ;
 	}
-	//slots_taken--; ??
-	// Save pointer for manual deletion outside the class
+	slots_taken--;
+	for (int i = 0; i < 1024; i++) {
+		if (!materia_on_the_floor[i]) {
+			materia_on_the_floor[i] = materia_slots[idx];
+			break;
+		}
+	}
 	materia_slots[idx] = nullptr;
 }
+
 void Character::use(int idx, ICharacter& target) {
-	if (idx < 0 || idx > 3 /* || idx > slots_taken - 1 */ || !materia_slots[idx])
-	{
+	if (idx < 0 || idx > 3 || !materia_slots[idx]) {
 		std::cout << "Trying to use unexisting Materia" << std::endl;
 		return ;
 	}

@@ -22,4 +22,5 @@ class Character : public ICharacter {
 		AMateria *materia_slots[4];
 		int	slots_taken;
 		std::string name;
+		AMateria *materia_on_the_floor[1024];
 };

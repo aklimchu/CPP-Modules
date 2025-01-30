@@ -3,17 +3,17 @@
 //--------------------------------Constructors--------------------------------//
 
 Ice::Ice() : AMateria("ice") {
-	std::cout << "Default constructor Ice called" << std::endl << std::endl;
+	//std::cout << "Default constructor Ice called" << std::endl << std::endl;
 }
 
 Ice::Ice(Ice const & src) : AMateria(src) {
-	std::cout << "Copy constructor Ice called" << std::endl << std::endl;
+	//std::cout << "Copy constructor Ice called" << std::endl << std::endl;
 }
 
 //---------------------------------Destructor---------------------------------//
 
 Ice::~Ice() {
-	std::cout << "Destructor Ice called" << std::endl << std::endl;
+	//std::cout << "Destructor Ice called" << std::endl << std::endl;
 }
 
 //-------------------------Copy assignment operator---------------------------//

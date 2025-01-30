@@ -3,15 +3,17 @@
 //--------------------------------Constructors--------------------------------//
 
 MateriaSource::MateriaSource() : IMateriaSource(), slots_taken(0) {
-	std::cout << "Default constructor MateriaSource called" << std::endl << std::endl;
+	//std::cout << "Default constructor MateriaSource called" << std::endl << std::endl;
+	for (int i = 0; i < 4; i++)
+        source_slots[i] = nullptr;
 }
 
 MateriaSource::MateriaSource(MateriaSource const & src) : slots_taken(0) { 
-	std::cout << "Copy constructor MateriaSource called" << std::endl << std::endl;
+	//std::cout << "Copy constructor MateriaSource called" << std::endl << std::endl;
 	this->slots_taken = src.slots_taken;
 	for (int i = 0; i < 4; i++) {
 		if (src.source_slots[i])
-			source_slots[i] = src.source_slots[i]->clone(); // Create new copy
+			source_slots[i] = src.source_slots[i]->clone();
 		else
 			source_slots[i] = nullptr;
 	}
@@ -20,9 +22,10 @@ MateriaSource::MateriaSource(MateriaSource const & src) : slots_taken(0) {
 //---------------------------------Destructor---------------------------------//
 
 MateriaSource::~MateriaSource() {
-	std::cout << "Destructor MateriaSource called" << std::endl << std::endl;
+	//std::cout << "Destructor MateriaSource called" << std::endl << std::endl;
 	for (int i = 0; i < 4; i++) {
 		delete source_slots[i];
+		source_slots[i] = nullptr;
 	}
 }
 
@@ -35,10 +38,11 @@ MateriaSource & MateriaSource::operator=(MateriaSource const & rhs) {
 		this->slots_taken = rhs.slots_taken;
 		for (int i = 0; i < 4; i++) {
 			if (this->source_slots[i]) {
-				delete this->source_slots[i]; // delete old Materia objects
+				delete this->source_slots[i];
+				source_slots[i] = nullptr;
 			}
 			if (rhs.source_slots[i]) {
-				this->source_slots[i] = rhs.source_slots[i]->clone(); // Clone new Materia objects
+				this->source_slots[i] = rhs.source_slots[i]->clone();
 			} else {
 				this->source_slots[i] = nullptr;
 			}
@@ -55,7 +59,7 @@ void MateriaSource::learnMateria(AMateria* to_learn) {
 		std::cout << "MateriaSource memory is full" << std::endl;
 		return ;
 	}
-	this->source_slots[slots_taken] = to_learn->clone();
+	this->source_slots[slots_taken] = to_learn;
 	this->slots_taken++;
 }
 
