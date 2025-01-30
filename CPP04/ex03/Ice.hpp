@@ -12,5 +12,6 @@ class Ice : public AMateria
 
 		Ice & operator=(Ice const & rhs); // Canonical
 
-		Ice* Ice::clone() const;
+		Ice* clone() const;
+		void use(ICharacter& target);
 };

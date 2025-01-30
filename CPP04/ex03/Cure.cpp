@@ -32,3 +32,7 @@ Cure* Cure::clone() const {
 	Cure new_cure = *this;
 	return &new_cure;
 }
+
+void Cure::use(ICharacter& target) {
+	std::cout << "* heals " << "<name>" << "’s wounds *" << std::endl;
+}

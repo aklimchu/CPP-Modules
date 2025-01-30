@@ -25,13 +25,20 @@ WHITE = \033[0;97m
 NAME		= interface
 
 # Compiler
-C++ 		= g++
+C++ 		= c++
 CFLAGS		= -Wall -Werror -Wextra -std=c++20
 RM			= rm -f
 RMDIR		= rm -rf
 
 # Source / OBJ files / Includes
-SRC 		=	main.cpp
+SRC 		=	main.cpp \
+				AMateria.cpp \
+				Character.cpp \
+				Cure.cpp \
+				Ice.cpp \
+				ICharacter.cpp \
+				IMateriaSource.cpp \
+				MateriaSource.cpp
 OBJ 		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR		= obj
 INCLUDE		= -I "./"
