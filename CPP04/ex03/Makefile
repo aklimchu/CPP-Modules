@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 09:06:17 by aklimchu          #+#    #+#              #
-#    Updated: 2025/01/27 15:50:03 by aklimchu         ###   ########.fr        #
+#    Updated: 2025/02/07 10:03:16 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ WHITE = \033[0;97m
 NAME		= interface
 
 # Compiler
-C++ 		= g++
-CFLAGS		= -ggdb3 -Wall -Werror -Wextra -std=c++20
+C++ 		= c++
+CFLAGS		= -Wall -Werror -Wextra -std=c++20
 RM			= rm -f
 RMDIR		= rm -rf
 

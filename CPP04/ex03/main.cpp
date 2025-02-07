@@ -1,9 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/07 10:02:36 by aklimchu          #+#    #+#             */
+/*   Updated: 2025/02/07 10:02:42 by aklimchu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "Character.hpp"
 #include "MateriaSource.hpp"
-
-// add more tests
 
 int main()
 {

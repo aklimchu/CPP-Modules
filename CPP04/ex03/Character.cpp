@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/07 10:01:59 by aklimchu          #+#    #+#             */
+/*   Updated: 2025/02/07 10:25:35 by aklimchu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Character.hpp"
 
 //--------------------------------Constructors--------------------------------//
@@ -107,6 +119,7 @@ void Character::equip(AMateria* m) {
 		if (!materia_slots[i]) {
 			materia_slots[i] = m;
 			slots_taken++;
+			std::cout << "New Materia added to equipment" << std::endl;
 			return;
 		}
 	}
@@ -126,6 +139,7 @@ void Character::unequip(int idx) {
 		}
 	}
 	materia_slots[idx] = nullptr;
+	std::cout << "Materia unequipped" << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target) {
