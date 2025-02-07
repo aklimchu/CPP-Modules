@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 10:02:06 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/02/07 10:02:07 by aklimchu         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:49:36 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class Character : public ICharacter {
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
+		void setName(std::string new_name);
 		
 	private:
 		AMateria *materia_slots[4];

@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:16:54 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/01/27 15:44:42 by aklimchu         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:30:03 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ class Cat : public Animal
 		void setCatIdeas(int i, std::string new_idea);
 		std::string getCatIdeas(int i) const;
 
+	private:
 		Brain *cat_brain;
 };

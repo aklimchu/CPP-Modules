@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 10:01:59 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/02/07 10:25:35 by aklimchu         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:53:28 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,11 @@ std::string const & Character::getName() const {
 
 void Character::equip(AMateria* m) {
 	if (!m) {
-		std::cout << "Invalid Materia" << std::endl;
+		std::cout << "Invalid Materia of " << name << std::endl;
 		return;
 	}
 	if (slots_taken == 4) {
-		std::cout << "Inventory is full" << std::endl;
+		std::cout << "Inventory of " << name << " is full" << std::endl;
 		delete m;
 		return;
 	}
@@ -119,7 +119,7 @@ void Character::equip(AMateria* m) {
 		if (!materia_slots[i]) {
 			materia_slots[i] = m;
 			slots_taken++;
-			std::cout << "New Materia added to equipment" << std::endl;
+			std::cout << "New Materia added to equipment of " << name << std::endl;
 			return;
 		}
 	}
@@ -128,7 +128,7 @@ void Character::equip(AMateria* m) {
 void Character::unequip(int idx) {
 	if (idx < 0 || idx > 3 || !materia_slots[idx])
 	{
-		std::cout << "Trying to unequip unexisting Materia" << std::endl;
+		std::cout << "Trying to unequip unexisting Materia of " << name << std::endl;
 		return ;
 	}
 	slots_taken--;
@@ -139,13 +139,17 @@ void Character::unequip(int idx) {
 		}
 	}
 	materia_slots[idx] = nullptr;
-	std::cout << "Materia unequipped" << std::endl;
+	std::cout << "Materia of " << name << " has been unequipped" << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target) {
 	if (idx < 0 || idx > 3 || !materia_slots[idx]) {
-		std::cout << "Trying to use unexisting Materia" << std::endl;
+		std::cout << "Trying to use unexisting Materia of " << name << std::endl;
 		return ;
 	}
 	materia_slots[idx]->use(target);
+}
+
+void Character::setName(std::string new_name) {
+	this->name = new_name;
 }
