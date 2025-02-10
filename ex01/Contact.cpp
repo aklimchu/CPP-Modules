@@ -17,26 +17,30 @@ Contact::~Contact() {
 	return ;
 }
 
-int Contact::getIndex(void) const {
-	return(this->index);
-}
-
-std::string Contact::getFirst(void) const {
-	return(this->first_name);
-}
-
-std::string Contact::getLast(void) const {
-	return(this->last_name);
-}
-
-std::string Contact::getNickname(void) const {
-	return(this->nickname);
-}
-
-std::string Contact::getPhoneNumber(void) const {
-	return(this->phone_number);
-}
-
-std::string Contact::getSecret(void) const {
-	return(this->darkest_secret);
+std::string Contact::getField(int field) const {
+	std::string	index_str;
+	
+	switch (field) {
+		case 0:
+		index_str = std::to_string(this->index);
+		return(index_str);
+		case 1:
+		return(this->first_name);
+		break ;
+		case 2:
+		return(this->last_name);
+		break ;
+		case 3:
+		return(this->nickname);
+		break ;
+		case 4:
+		return(this->phone_number);
+		break ;
+		case 5:
+		return(this->darkest_secret);
+		break ;
+		default:
+		std::cout << "No field found" << std::endl;
+	}
+	return (nullptr);
 }

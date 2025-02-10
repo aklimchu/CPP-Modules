@@ -13,10 +13,12 @@ class PhoneBook{
 			std::string secret);
 		void	print_all() const;
 		int		print_entry(int entry_index) const;
+		Contact get_contact(int i) const;
 	
 	private:
 		Contact contact[8];
 		int		number_of_contacts = 0;
+		void str_to_shorter (int i, int field_num) const;
 };
 
 #endif

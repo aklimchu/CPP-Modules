@@ -1,17 +1,12 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(){
-	return ;
-}
+PhoneBook::PhoneBook() { }
 
-
-PhoneBook::~PhoneBook(){
-	return ;
-}
+PhoneBook::~PhoneBook() { }
 
 void	PhoneBook::add_new_contact(std::string first, \
 			std::string last, std::string nickname, std::string phone, \
-			std::string secret){
+			std::string secret) {
 	int i;
 	
 	if (this->number_of_contacts == 8)
@@ -24,79 +19,55 @@ void	PhoneBook::add_new_contact(std::string first, \
 	this->contact[i] = Contact(i + 1, first, last, nickname, phone, secret);
 }
 
-void	PhoneBook::print_all() const{
-	int			word_length;
-	std::string	index_str;
-	std::string	short_str;
-	
+void	PhoneBook::str_to_shorter(int i, int field_num) const {
+		int	word_length;
+		std::string	short_str;
+		
+		word_length = this->get_contact(i).getField(field_num).length();
+		if (word_length > 10)
+		{
+			short_str = this->get_contact(i).getField(field_num).substr(0, 9);
+			short_str.push_back('.');
+		}
+		else
+			short_str = this->get_contact(i).getField(field_num);
+		std::cout << "|" << std::setw(10) << short_str;
+		if (field_num == 3)
+			std::cout << "|" << std::endl;
+}
+
+Contact PhoneBook::get_contact(int i) const {
+	return (this->contact[i]);
+}
+
+
+void	PhoneBook::print_all() const {
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 	std::cout << "|     Index|First name| Last name|  Nickname|" << std::endl;
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 	for (int i = 0; i < this->number_of_contacts; i++)
 	{
-		index_str.clear();
-		short_str.clear();
-		index_str = std::to_string(this->contact[i].getIndex());
-		word_length = index_str.length();
-		if (word_length > 10)
-		{
-			short_str = index_str.substr(0, 9);
-			short_str.push_back('.');
-		}
-		else
-			short_str = index_str;
-		std::cout << "|" << std::setw(10) << short_str;
-
-		short_str.clear();
-		word_length = this->contact[i].getFirst().length();
-		if (word_length > 10)
-		{
-			short_str = this->contact[i].getFirst().substr(0, 9);
-			short_str.push_back('.');
-		}
-		else
-			short_str = this->contact[i].getFirst();
-		std::cout << "|" << std::setw(10) << short_str;
-
-		short_str.clear();
-		word_length = this->contact[i].getLast().length();
-		if (word_length > 10)
-		{
-			short_str = this->contact[i].getLast().substr(0, 9);
-			short_str.push_back('.');
-		}
-		else
-			short_str = this->contact[i].getLast();
-		std::cout << "|" << std::setw(10) << short_str;
-
-		short_str.clear();
-		word_length = this->contact[i].getNickname().length();
-		if (word_length > 10)
-		{
-			short_str = this->contact[i].getNickname().substr(0, 9);
-			short_str.push_back('.');
-		}
-		else
-			short_str = this->contact[i].getNickname();
-		std::cout << "|" << std::setw(10) << short_str << "|" << std::endl;
-
+		this->str_to_shorter(i, 0);
+		this->str_to_shorter(i, 1);
+		this->str_to_shorter(i, 2);
+		this->str_to_shorter(i, 3);
 		std::cout << "|----------|----------|----------|----------|" << std::endl;
 	}
 };
 
-int	PhoneBook::print_entry(int index) const{
+int	PhoneBook::print_entry(int index) const {
 	if (index > this->number_of_contacts - 1 || index < 0){
 		std::cout << "Entry doesn't exist" << std::endl;
 		return 1;
 	}
 	else
 	{
-		std::cout << "Index: " << this->contact[index].getIndex() << std::endl;
-		std::cout << "First name: " << this->contact[index].getFirst() << std::endl;
-		std::cout << "Last name: " << this->contact[index].getLast() << std::endl;
-		std::cout << "Nickname: " << this->contact[index].getNickname() << std::endl;
-		std::cout << "Phone number: " << this->contact[index].getPhoneNumber() << std::endl;
-		std::cout << "Darkest secret: " << this->contact[index].getSecret() << std::endl;
+		std::cout << "Index: " << this->contact[index].getField(0) << std::endl;
+		std::cout << "First name: " << this->contact[index].getField(1) << std::endl;
+		std::cout << "Last name: " << this->contact[index].getField(2) << std::endl;
+		std::cout << "Nickname: " << this->contact[index].getField(3) << std::endl;
+		std::cout << "Phone number: " << this->contact[index].getField(4) << std::endl;
+		std::cout << "Darkest secret: " << this->contact[index].getField(5) << std::endl;
 		return 0;
 	}
 };

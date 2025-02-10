@@ -10,12 +10,7 @@ class Contact{
 		Contact(int i, std::string first, std::string last, std::string nick,
 			std::string phone, std::string secret);
 		~Contact(void);
-		int getIndex(void) const;
-		std::string getFirst(void) const;
-		std::string getLast(void) const;
-		std::string getNickname(void) const;
-		std::string getPhoneNumber(void) const;
-		std::string getSecret(void) const;
+		std::string getField(int field) const;
 
 	private:
 		int			index;

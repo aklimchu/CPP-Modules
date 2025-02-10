@@ -6,7 +6,7 @@ static void	check_input_str(std::string *string, std::string out_string);
 static void	check_input_phone(std::string *string, std::string out_string);
 static void	search_entry(PhoneBook	instance);
 
-int	main(){
+int	main() {
 	PhoneBook	instance;
 	std::string	input, first, last, nickname, phone, secret;
 
@@ -37,8 +37,7 @@ int	main(){
 	return 0;
 }
 
-static int	check_digits(std::string string)
-{
+static int	check_digits(std::string string) {
 	int length = string.length();
 	for (int i = 0; i < length; i++){
 		if (std::isdigit(string[i]) == 0)
@@ -50,8 +49,7 @@ static int	check_digits(std::string string)
 	return 0;
 }
 
-static void	check_input_str(std::string *string, std::string out_string)
-{
+static void	check_input_str(std::string *string, std::string out_string) {
 	string->clear();
 	while (string->length() == 0)
 	{
@@ -67,8 +65,7 @@ static void	check_input_str(std::string *string, std::string out_string)
 	}
 }
 
-static void	check_input_phone(std::string *string, std::string out_string)
-{
+static void	check_input_phone(std::string *string, std::string out_string) {
 	string->clear();
 	while (string->length() == 0 || check_digits(*string) == 1)
 	{
@@ -84,8 +81,7 @@ static void	check_input_phone(std::string *string, std::string out_string)
 	}
 }
 
-static void	search_entry(PhoneBook	instance)
-{
+static void	search_entry(PhoneBook	instance) {
 	std::string	entry_number;
 	
 	instance.print_all();
