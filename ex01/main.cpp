@@ -1,28 +1,14 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-int	check_digits(std::string string)
-{
-	int length = string.length();
-	for (int i = 0; i < length; i++){
-		if (std::isdigit(string[i]) == 0)
-		{
-			std::cout << "The field can include only digits" << std::endl;
-			return 1;
-		}
-	}
-	return 0;
-}
+static int	check_digits(std::string string);
+static void	check_input_str(std::string *string, std::string out_string);
+static void	check_input_phone(std::string *string, std::string out_string);
+static void	search_entry(PhoneBook	instance);
 
 int	main(){
 	PhoneBook	instance;
-	std::string	input;
-	std::string	first;
-	std::string	last;
-	std::string	nickname;
-	std::string	phone;
-	std::string	secret;
-	std::string	entry_number;
+	std::string	input, first, last, nickname, phone, secret;
 
 	while (1)
 	{
@@ -36,94 +22,85 @@ int	main(){
 		}
 		if (input.compare("ADD") == 0)
 		{
-			first.clear();
-			while (first.length() == 0)
-			{
-				std::cout << "Enter the first name: ";
-				getline(std::cin, first);
-				if (std::cin.fail())
-				{
-                    std::cout << std::endl << "Invalid Input" << std::endl;
-					return 1;
-				}
-				else if (first.length() == 0)
-					std::cout << "Field can't be empty" << std::endl;
-			}
-			last.clear();
-			while (last.length() == 0)
-			{
-				std::cout << "Enter the last name: ";
-				getline(std::cin, last);
-				if (std::cin.fail())
-				{
-                    std::cout << std::endl << "Invalid Input" << std::endl;
-					return 1;
-				}
-				if (last.length() == 0)
-					std::cout << "Field can't be empty" << std::endl;
-			}
-			nickname.clear();
-			while (nickname.length() == 0)
-			{
-				std::cout << "Enter the nickname: ";
-				getline(std::cin, nickname);
-				if (std::cin.fail())
-				{
-                    std::cout << std::endl << "Invalid Input" << std::endl;
-					return 1;
-				}
-				if (nickname.length() == 0)
-					std::cout << "Field can't be empty" << std::endl;
-			}
-			phone.clear();
-			while (phone.length() == 0 || check_digits(phone) == 1)
-			{
-				std::cout << "Enter the phone number: ";
-				getline(std::cin, phone);
-				if (std::cin.fail())
-				{
-                    std::cout << std::endl << "Invalid Input" << std::endl;
-					return 1;
-				}
-				if (phone.length() == 0)
-					std::cout << "Field can't be empty" << std::endl;
-			}
-			secret.clear();
-			while (secret.length() == 0)
-			{
-				std::cout << "Enter the darkest secret: ";
-				getline(std::cin, secret);
-				if (std::cin.fail())
-				{
-                    std::cout << std::endl << "Invalid Input" << std::endl;
-					return 1;
-				}
-				if (secret.length() == 0)
-					std::cout << "Field can't be empty" << std::endl;
-			}
+			check_input_str(&first, "first name");
+			check_input_str(&last, "last name");
+			check_input_str(&nickname, "nickname");
+			check_input_phone(&phone, "phone number");
+			check_input_str(&secret, "darkest secret");
 			instance.add_new_contact(first, last, nickname, phone, secret);
-
 		}
 		else if (input.compare("SEARCH") == 0)
-		{
-			instance.print_all();
-			std::cout << "Enter the entry number to be displayed: ";
-			getline(std::cin, entry_number);
-			if (std::cin.fail())
-			{
-               	std::cout << std::endl << "Invalid Input" << std::endl;
-			}
-			else if (!check_digits(entry_number)){
-				try {
-					instance.print_entry(std::stoi(entry_number) - 1);
-				}
-				catch (...) {
-					std::cout << "Invalid Input" << std::endl;
-				}
-			}
-		}
+			search_entry(instance);
 		else if (input.compare("EXIT") == 0)
 			exit (EXIT_SUCCESS);
 	}
 	return 0;
+}
+
+static int	check_digits(std::string string)
+{
+	int length = string.length();
+	for (int i = 0; i < length; i++){
+		if (std::isdigit(string[i]) == 0)
+		{
+			std::cout << "The field can include only digits" << std::endl;
+			return 1;
+		}
+	}
+	return 0;
+}
+
+static void	check_input_str(std::string *string, std::string out_string)
+{
+	string->clear();
+	while (string->length() == 0)
+	{
+		std::cout << "Enter the " << out_string << ": ";
+		getline(std::cin, *string);
+		if (std::cin.fail())
+		{
+            std::cout << std::endl << "Invalid Input" << std::endl;
+			return ;
+		}
+		else if (string->length() == 0)
+			std::cout << "Field can't be empty" << std::endl;
+	}
+}
+
+static void	check_input_phone(std::string *string, std::string out_string)
+{
+	string->clear();
+	while (string->length() == 0 || check_digits(*string) == 1)
+	{
+		std::cout << "Enter the " << out_string << ": ";
+		getline(std::cin, *string);
+		if (std::cin.fail())
+		{
+            std::cout << std::endl << "Invalid Input" << std::endl;
+			return ;
+		}
+		else if (string->length() == 0)
+			std::cout << "Field can't be empty" << std::endl;
+	}
+}
+
+static void	search_entry(PhoneBook	instance)
+{
+	std::string	entry_number;
+	
+	instance.print_all();
+	std::cout << "Enter the entry number to be displayed: ";
+	getline(std::cin, entry_number);
+	if (std::cin.fail())
+	{
+       	std::cout << std::endl << "Invalid Input" << std::endl;
+	}
+	else if (!check_digits(entry_number)){
+		try {
+			instance.print_entry(std::stoi(entry_number) - 1);
+		}
+		catch (...) {
+			std::cout << "Invalid Input" << std::endl;
+		}
+	}
 }
