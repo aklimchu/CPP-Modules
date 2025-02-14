@@ -24,7 +24,7 @@ CPP01/
 │── ex02/
 ```
 
-Each exercise (ex00-ex06) contains a separate task designed to reinforce the module's concepts.
+Each exercise contains a separate task designed to reinforce the module's concepts.
 
 ## ⚙️ Compilation & Execution 
 To compile a specific exercise, navigate to its directory and run:
