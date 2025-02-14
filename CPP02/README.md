@@ -18,7 +18,7 @@ This project is the third module of the C++ Piscine at 42. It expands on object-
 
 ## 📂 Project Structure
 ```bash
-CPP01/
+CPP02/
 │── ex00/
 │── ex01/
 │── ex02/
