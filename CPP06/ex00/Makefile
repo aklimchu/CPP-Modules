@@ -10,7 +10,7 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 # Program name
-NAME		= converter
+NAME		= convert
 
 # Compiler
 C++ 		= c++
@@ -38,14 +38,14 @@ $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 
 $(NAME):	$(OBJ_DIR) $(OBJ)
 	@$(C++) $(CFLAGS) $(OBJ) $(INCLUDE) -o $(NAME)
-	@echo "$(GREEN)SUCCESS, CONVERTER IS READY $(DEF_COLOR)"
+	@echo "$(GREEN)SUCCESS, CONVERT IS READY $(DEF_COLOR)"
 
 clean:
 	@echo "$(RED)Deleting object files... $(DEF_COLOR)"
 	@$(RMDIR) $(OBJ_DIR) 
 
 fclean:		clean
-	@echo "$(GREEN)Deleting converter... $(DEF_COLOR)"
+	@echo "$(GREEN)Deleting convert... $(DEF_COLOR)"
 	@$(RMDIR) $(NAME)
 	@echo "$(GREEN)CLEAR $(DEF_COLOR)"
 
