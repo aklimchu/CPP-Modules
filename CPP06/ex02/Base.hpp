@@ -3,5 +3,6 @@
 #include <iostream>
 
 class Base {
-	virtual ~Base(void) = default;
+	public:
+		virtual ~Base(void);
 };

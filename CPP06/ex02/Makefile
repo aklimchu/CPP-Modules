@@ -19,7 +19,12 @@ RM			= rm -f
 RMDIR		= rm -rf
 
 # Source / OBJ files / Includes
-SRC 		=	main.cpp
+SRC 		=	main.cpp \
+				functions.cpp \
+				Base.cpp \
+				A.cpp \
+				B.cpp \
+				C.cpp
 OBJ 		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR		= obj
 INCLUDE		= -I "./"

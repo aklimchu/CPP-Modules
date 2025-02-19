@@ -3,4 +3,8 @@
 #include <iostream>
 #include "Base.hpp"
 
-class B : public Base {};
+class B : public Base {
+	public:
+		B(void);
+		~B(void) = default;
+};
