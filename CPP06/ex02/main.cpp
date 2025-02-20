@@ -8,13 +8,14 @@ void identify(Base* p);
 void identify(Base & p);
 
 int main(void) {
-	Base *Class[6];
+	Base *Class[6] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
 
 	for (int i = 0; i < 6; i++) {
 		Class[i] = generate();
 		identify(Class[i]);
 		identify(&(*Class[i]));
-		delete Class[i];
+		if (Class[i])
+			delete Class[i];
 		std::cout << std::endl;
 	}
 
