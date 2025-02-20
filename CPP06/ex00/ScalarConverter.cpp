@@ -14,24 +14,24 @@ void ScalarConverter::convert(const std::string str) {
 	}
 	if (i == 5)
 	{
-		error_all_impossible();
+		errorAllImpossible();
 		return;
 	}
 	switch (i)  {
 		case 0:
-			convert_special_float(str);
+			convertSpecialFloat(str);
 			break;
 		case 1:
-			convert_integer(str);
+			convertInteger(str);
 			break;
 		case 2:
-			convert_char(str);
+			convertChar(str);
 			break;
 		case 3:
-			convert_double(str);
+			convertDouble(str);
 			break;
 		case 4:
-			convert_float(str);
+			convertFloat(str);
 			break;
 	}
 }
@@ -47,7 +47,7 @@ bool ScalarConverter::isFloat(const std::string &str) {
 }
 
 bool ScalarConverter::isDouble(const std::string &str) {
-	std::regex doubleRegex(R"(^[+-]?(inf|nan)$|^[+-]?\d*\.\d+([eE][+-]?\d+)?$)");
+	std::regex doubleRegex(R"(^[+-]?(inf|nan)$|^[+-]?\d+(\.\d*)?([eE][+-]?\d+)?$)");
     return std::regex_match(str, doubleRegex);
 }
 
@@ -60,31 +60,33 @@ bool ScalarConverter::isSpecialFloat(const std::string& str) {
                str == "+inff" || str == "-inff" || str == "inff" || str == "nanf";
 }
 
-void ScalarConverter::error_all_impossible(void) {
+void ScalarConverter::errorAllImpossible(void) {
 	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: impossible" << std::endl;
 	std::cout << "float: impossible" << std::endl;
 	std::cout << "double: impossible" << std::endl;
 }
 
-void ScalarConverter::convert_special_float(std::string str)  {
+void ScalarConverter::convertSpecialFloat(std::string str)  {
 	float res_float;
 
 	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: impossible" << std::endl;
 	res_float = std::stof(str);
-	std::cout << "float: " << std::fixed << std::setprecision(1) << res_float << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(res_float) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(calculatePrecision(str)) \
+		<< res_float << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(calculatePrecision(str)) \
+		<< static_cast<double>(res_float) << std::endl;
 }
 
-void ScalarConverter::convert_integer(std::string str) {
+void ScalarConverter::convertInteger(std::string str) {
 	int res_int;
 
 	try {
 		res_int = std::stoi(str);
 	}
 	catch (const std::exception& e) {
-		error_all_impossible();
+		errorAllImpossible();
 		return;
 	}
 	if (res_int < std::numeric_limits<char>::min() || res_int > std::numeric_limits<char>::max())
@@ -95,11 +97,13 @@ void ScalarConverter::convert_integer(std::string str) {
 		std::cout << "char: '" << static_cast<char>(res_int) << "'" << std::endl;
 	}
 	std::cout << "int: " << res_int << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(res_int) << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(res_int) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(calculatePrecision(str)) \
+		<< static_cast<float>(res_int) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(calculatePrecision(str)) \
+		<< static_cast<double>(res_int) << std::endl;
 }
 
-void ScalarConverter::convert_char(std::string str) {
+void ScalarConverter::convertChar(std::string str) {
 	char res_char;
 	
 	res_char = str[0];
@@ -109,7 +113,7 @@ void ScalarConverter::convert_char(std::string str) {
 	std::cout << "double: " << static_cast<double>(res_char) << std::endl;
 }
 
-void ScalarConverter::convert_float(std::string str) {
+void ScalarConverter::convertFloat(std::string str) {
 	float res_float;
 	double res_double;
 	
@@ -136,15 +140,17 @@ void ScalarConverter::convert_float(std::string str) {
 	else {
 		std::cout << "int: " << static_cast<int>(res_float) << std::endl;
 	}
-	std::cout << "float: " << std::fixed << std::setprecision(1) << res_float << "f" << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(calculatePrecision(str)) \
+		<< res_float << "f" << std::endl;
 	if (res_float < std::numeric_limits<double>::lowest() || res_float > std::numeric_limits<double>::max())
 		std::cout << "double: impossible" << std::endl;
 	else {
-		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(res_float) << std::endl;				
+		std::cout << "double: " << std::fixed << std::setprecision(calculatePrecision(str)) \
+			<< static_cast<double>(res_float) << std::endl;				
 	}
 }
 
-void ScalarConverter::convert_double(std::string str) {
+void ScalarConverter::convertDouble(std::string str) {
 	double res_double;
 	
 	try {
@@ -172,7 +178,25 @@ void ScalarConverter::convert_double(std::string str) {
 	if (res_double < std::numeric_limits<float>::lowest() || res_double > std::numeric_limits<float>::max())
 		std::cout << "float: impossible" << std::endl;
 	else {
-		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(res_double) << "f" << std::endl;				
+		std::cout << "float: " << std::fixed << std::setprecision(calculatePrecision(str)) \
+			<< static_cast<float>(res_double) << "f" << std::endl;				
 	}
-	std::cout << "double: " << std::fixed << std::setprecision(1) << res_double << std::endl;				
+	std::cout << "double: " << std::fixed << std::setprecision(calculatePrecision(str)) \
+		<< res_double << std::endl;				
+}
+
+int ScalarConverter::calculatePrecision(std::string str) {
+	int i = 0;
+
+	while (str[i] && str[i] != '.')
+		i++;
+	int count = 0;
+	while (str[i] && str[i + 1] && str[i + 1] != 'f'  && str[i + 1] != 'F') {
+		i++;
+		count++;
+	}
+	if (count == 0)
+		return 1;
+	else
+		return count;
 }

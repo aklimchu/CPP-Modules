@@ -2,9 +2,13 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
+#include <random> // for random_device
 
 Base * generate(void) {
-	int i = std::rand()%(2 - 0 + 1) + 0;
+	std::random_device rd;
+	std::srand(rd());
+
+	int i = std::rand() % 3;
 	switch (i) {
 		case 0:
 		A *A_Instance;
