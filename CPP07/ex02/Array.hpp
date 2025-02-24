@@ -46,9 +46,6 @@ class Array {
 			if (index >= arrSize) {
 				throw Array::IndexTooHighException();
 			}
-			/* if (index < 0) {
-				throw Array::IndexTooLowException();
-			} */
 			return (arr[index]);
 		};
 
@@ -58,13 +55,6 @@ class Array {
 					return ("Index is out of bounds");
 				}
 		};
-
-		/* class IndexTooLowException : public std::exception {
-			public:
-				virtual const char* what() const throw() {
-					return ("Index can't be less than zero");
-				}
-		}; */
 
 	private:
 		T *arr;
