@@ -9,7 +9,7 @@ class Array {
 		};
 
 		Array(size_t const n) : arr(new T[n]), arrSize(n) {
-			 for (size_t i = 0; i < arrSize; i++) {
+			for (size_t i = 0; i < arrSize; i++) {
         		arr[i] = T();
     }
 		};
