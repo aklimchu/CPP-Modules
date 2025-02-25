@@ -19,8 +19,7 @@ RM			= rm -f
 RMDIR		= rm -rf
 
 # Source / OBJ files / Includes
-SRC 		=	main.cpp \
-				MutantStack.cpp
+SRC 		= main.cpp
 OBJ 		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR		= obj
 INCLUDE		= -I "./"

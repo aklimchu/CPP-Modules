@@ -20,7 +20,7 @@ int main(void) {
 
 	mstack.push(0);
 
-/* 	MutantStack<int>::iterator it = mstack.begin();
+	/* MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
 
 	++it;
@@ -30,9 +30,9 @@ int main(void) {
 	{
 		std::cout << *it << std::endl;
 		++it;
-	}
+	} */
 
-	std::stack<int> s(mstack); */
+	std::stack<int> s(mstack);
 
 	return 0;
 }
