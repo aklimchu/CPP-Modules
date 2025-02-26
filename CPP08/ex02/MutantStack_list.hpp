@@ -133,3 +133,64 @@ class MutantStack {
 	private:
 		std::list <T> lst;
 };
+
+
+
+		//MutantStack<T>::container_type &get_container() { return this->c; }
+
+
+//-----------------------------iterators------------------------------//
+		
+		// class iterator {
+    	// private:
+        // 	typename std::stack<T>::container_type::iterator it;
+
+    	// public:
+        // 	// Constructor
+        // 	iterator(typename std::stack<T>::container_type::iterator stack_it) : it(stack_it) {}
+
+        // 	// Dereference operator
+        // 	T& operator*() { return *it; }
+
+        // 	// Pre-increment
+        // 	iterator& operator++() { // checking for boundaries reached?
+		// 		/* if (ptr == nullptr) {
+       	// 			throw std::out_of_range("Iterator out of range");
+    	// 		} */
+		// 		++it;
+        //     	return *this;
+        // 	}
+
+        // 	// Post-increment
+        // 	iterator operator++(int) { 
+        //     	iterator temp = *this;
+		// 		/* if (ptr == nullptr) {
+        // 			throw std::out_of_range("Iterator cannot go beyond the end");
+    	// 		} */
+        //     	++it; 
+        //     	return temp;
+       	// 	}
+
+        // 	// Pre-decrement
+        // 	iterator& operator--() { 
+        //    		/* if (ptr == nullptr) {
+       	// 			throw std::out_of_range("Iterator out of range");
+    	// 		} */
+		// 		--it; 
+        //     	return *this;
+       	// 	}
+
+        // 	// Post-decrement
+        // 	iterator operator--(int) { 
+        //     	iterator temp = *this;
+		// 		/* if (ptr == nullptr) {
+        // 			throw std::out_of_range("Iterator cannot go beyond the end");
+    	// 		} */
+        //     	--it; 
+        //     	return temp;
+        // 	}
+
+        // 	// Comparison operators
+        // 	bool operator==(const iterator& other) const { return it == other.it; }
+        // 	bool operator!=(const iterator& other) const { return it != other.it; }
+    	// };
