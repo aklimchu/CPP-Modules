@@ -5,7 +5,7 @@ int main(void) {
 
 //---------------------------------Testing with MutantStack-----------------------------//
 
-	std::cout << line << "Testing with MutantStack" << line  << std::endl << std::endl;
+	std::cout << std::endl << line << "Testing with MutantStack" << line  << std::endl << std::endl;
 	
 	MutantStack<int> mstack;
 
@@ -40,7 +40,7 @@ int main(void) {
 
 	//---------------------------------Testing with std::list-----------------------------//
 
-	std::cout << line << "Testing with std::list" << line  << std::endl << std::endl;
+	std::cout << std::endl << line << "Testing with std::list" << line  << std::endl << std::endl;
 
 	std::list<int> lst;
 
@@ -75,7 +75,7 @@ int main(void) {
 
 	//-------------------------------Testing the deep copy--------------------------------//
 
-	std::cout << line << "Testing the deep copy" << line  << std::endl << std::endl;
+	std::cout << std::endl << line << "Testing the deep copy" << line  << std::endl << std::endl;
 
 	MutantStack<int> copy_stack(mstack);
 
@@ -89,6 +89,50 @@ int main(void) {
 	{
 		std::cout << "Original stack: " << *it << std::endl;
 		++it;
+	}
+
+	//-----------------------------Testing reverse iterators------------------------------//
+
+	std::cout << std::endl << line << "Testing reverse iterators" << line  << std::endl << std::endl;
+
+	MutantStack<int>::reverse_iterator itr = mstack.rbegin();
+	MutantStack<int>::reverse_iterator iter = mstack.rend();
+
+	while (itr != iter)
+	{
+		std::cout << *itr << std::endl;
+		++itr;
+	}
+
+
+	//-----------------------------Testing constant iterators------------------------------//
+
+	std::cout << std::endl << line << "Testing constant iterators" << line  << std::endl << std::endl;
+
+	MutantStack<int>::const_iterator itc = mstack.cbegin();
+	MutantStack<int>::const_iterator itec = mstack.cend();
+
+	//*itc = 1; not possible because of const
+
+	while (itc != itec)
+	{
+		std::cout << *itc << std::endl;
+		++itc;
+	}
+
+	//-----------------------------Testing constant reverse iterators------------------------------//
+
+	std::cout << std::endl << line << "Testing constant reverse iterators" << line  << std::endl << std::endl;
+
+	MutantStack<int>::const_reverse_iterator itcr = mstack.crbegin();
+	MutantStack<int>::const_reverse_iterator itecr = mstack.crend();
+
+	//*itcr = 1; not possible because of const
+
+	while (itcr != itecr)
+	{
+		std::cout << *itcr << std::endl;
+		++itcr;
 	}
 
 	return 0;
