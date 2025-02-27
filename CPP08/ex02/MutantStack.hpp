@@ -2,36 +2,24 @@
 
 #include <iostream>
 #include <stack>
-
+#include <list>
 
 template <typename T>
 class MutantStack : public std::stack<T> {
 	public:
 //--------------------------------Constructors--------------------------------//
 
-		MutantStack (void) /* : stk() */ {
-			//std::cout << "Default constructor MutantStack called" << std::endl << std::endl;
-		}
-		MutantStack (MutantStack const & src) /* : stk(src.stk) */ {
-			//std::cout << "Copy constructor MutantStack called" << std::endl << std::endl;
-			(void) src;
-		}
+		MutantStack (void)  = default;
+
+		MutantStack (MutantStack const & src) = default;
 
 //---------------------------------Destructor---------------------------------//
 
-		~MutantStack (void) {
-			//std::cout << "Destructor MutantStack called" << std::endl << std::endl;
-		}
+		~MutantStack (void) = default;
 
 //-------------------------Copy assignment operator---------------------------//
 
-		MutantStack & operator=(MutantStack const & rhs)  {
-			//std::cout << "Copy assignment operator MutantStack called" << std::endl << std::endl;
-			if (this != &rhs) {
-        		/* stk = rhs.stk; */
-    		}
-			return *this;
-		}
+		MutantStack & operator=(MutantStack const & rhs) = default;
 
 //-------------------------------Member functions------------------------------//
 

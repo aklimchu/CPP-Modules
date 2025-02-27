@@ -12,46 +12,30 @@ int main(void) {
 	lst1.push_back(17);
 
 	std::cout << "List created" << std::endl;
-	try {
-		std::cout << "Trying to locate 1 :" << easyfind(lst1, 1) << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cerr << "No occurrence is found"  << std::endl;
-	}
-	try {
-		std::cout << "Trying to locate 17 :" << easyfind(lst1, 17) << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cerr << "No occurrence is found" << std::endl;
-	}
-	try {
-		std::cout << "Trying to locate -5 :" << easyfind(lst1, -5) << std::endl << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cerr << "No occurrence is found" << std::endl;
+	
+	std::vector<int> test_values = {1, 17, -5};
+
+	for (int val : test_values) {
+    	try {
+        	std::cout << "Trying to locate " << val << " : " << easyfind(lst1, val) << std::endl;
+    	} catch (const std::exception& e) {
+        	std::cerr << "No occurrence of " << val << " is found" << std::endl;
+    	}
 	}
 
 //-------------------------------Testing the vector-------------------------//
 	std::vector<int> v1 = {1, 17, 42, 17};
 
 	std::cout << std::endl<< "Vector created" << std::endl;
-	try {
-		std::cout << "Trying to locate 1 :" << easyfind(v1, 1) << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cerr << "No occurrence is found" << std::endl;
-	}
-	try {
-		std::cout << "Trying to locate 17 :" << easyfind(v1, 17) << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cerr << "No occurrence is found" << std::endl;
-	}
-	try {
-		std::cout << "Trying to locate -5 :" << easyfind(v1, -5) << std::endl << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cerr << "No occurrence is found" << std::endl;
+	
+	std::vector<int> test_values_2 = {1, 17, -5};
+
+	for (int val : test_values_2) {
+   		try {
+       		std::cout << "Trying to locate " << val << " : " << easyfind(v1, val) << std::endl;
+    	} catch (const std::exception& e) {
+        	std::cerr << "No occurrence of " << val << " is found" << std::endl;
+    	}
 	}
 
 	return 0;

@@ -16,41 +16,16 @@ int main()
 
 //----------------------------adding the numbers-----------------------//
 	std::cout << std::endl << line << "adding the numbers" << line << std::endl << std::endl;
-	try {
-		sp.addNumber(6);
-	}
-	catch (Span::ListIfFull &fl) {
-		std::cout << fl.what() << std::endl;
-	}
-	try {
-		sp.addNumber(3);
-	}
-	catch (Span::ListIfFull &fl) {
-		std::cout << fl.what() << std::endl;
-	}
-	try {
-		sp.addNumber(17);
-	}
-	catch (Span::ListIfFull &fl) {
-		std::cout << fl.what() << std::endl;
-	}
-	try {
-		sp.addNumber(9);
-	}
-	catch (Span::ListIfFull &fl) {
-		std::cout << fl.what() << std::endl;
-	}
-	try {
-		sp.addNumber(11);
-	}
-	catch (Span::ListIfFull &fl) {
-		std::cout << fl.what() << std::endl;
-	}
-	try {
-		sp.addNumber(-5);
-	}
-	catch (Span::ListIfFull &fl) {
-		std::cout << fl.what() << std::endl;
+	
+	std::vector<int> test_values = {6, 3, 17, 9, 11, -5};
+
+	for (int val : test_values) {
+		try {
+			sp.addNumber(val);
+		}
+		catch (Span::ListIfFull &fl) {
+			std::cout << fl.what() << std::endl;
+		}
 	}
 
 //----------------finding shortest and longest spans-----------------//
