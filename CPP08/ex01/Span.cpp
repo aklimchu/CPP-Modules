@@ -58,7 +58,9 @@ size_t Span::shortestSpan() {
 	}
 	if (!std::is_sorted(lst.begin(), lst.end()))
 		lst.sort();
-	size_t span = *std::next(lst.begin(), 1) - *lst.begin();
+	long sp1 = *std::next(lst.begin(), 1);
+	long sp2 = *lst.begin();
+	size_t span = sp1 - sp2;
 	for (size_t i = 1; i < lst.size() - 1; i++) {
 		size_t new_span = *std::next(lst.begin(), i + 1) - *std::next(lst.begin(), i);
 		if (new_span < span) {
@@ -74,6 +76,8 @@ size_t Span::longestSpan() {
 	}
 	if (!std::is_sorted(lst.begin(), lst.end()))
 		lst.sort();
-	size_t span = lst.back() - lst.front();
+	long sp1 = lst.back();
+	long sp2 = lst.front();
+	size_t span = sp1 - sp2;
 	return span;
 }
