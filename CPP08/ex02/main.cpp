@@ -3,7 +3,7 @@
 int main(void) {
 	const std::string line = "-------------------------";
 
-//---------------------------------Testing with MutantStack-----------------------------//
+	//---------------------------------Testing with MutantStack-----------------------------//
 
 	std::cout << std::endl << line << "Testing with MutantStack" << line  << std::endl << std::endl;
 	

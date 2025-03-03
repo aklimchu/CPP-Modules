@@ -3,7 +3,7 @@
 #include <vector>
 
 int main(void) {
-//--------------------------------Testing the list--------------------------//
+	//--------------------------------Testing the list--------------------------//
 	std::list<int> lst1;
 
 	lst1.push_back(1);
@@ -23,7 +23,7 @@ int main(void) {
     	}
 	}
 
-//-------------------------------Testing the vector-------------------------//
+	//-------------------------------Testing the vector-------------------------//
 	std::vector<int> v1 = {1, 17, 42, 17};
 
 	std::cout << std::endl<< "Vector created" << std::endl;

@@ -5,7 +5,7 @@ int main()
 	Span sp = Span(5);
 	const std::string line = "-------------------------";
 
-//-----------------------testing the span exception---------------------//
+	//-----------------------testing the span exception---------------------//
 	std::cout << line << "testing the span exception" << line  << std::endl << std::endl;
 	try {
 		std::cout << sp.shortestSpan() << std::endl;
@@ -14,7 +14,7 @@ int main()
 		std::cout << fl.what() << std::endl;
 	}
 
-//----------------------------adding the numbers-----------------------//
+	//----------------------------adding the numbers-----------------------//
 	std::cout << std::endl << line << "adding the numbers" << line << std::endl << std::endl;
 	
 	std::vector<int> test_values = {6, 3, 17, 9, 11, -5};
@@ -28,7 +28,7 @@ int main()
 		}
 	}
 
-//----------------finding shortest and longest spans-----------------//
+	//----------------finding shortest and longest spans-----------------//
 	std::cout << std::endl << line << "finding shortest and longest spans" \
 		<< line << std::endl << std::endl;
 	try {
@@ -44,7 +44,7 @@ int main()
 		std::cout << fl.what() << std::endl;
 	}
 
-//----------------------------creating the range-----------------------//
+	//----------------------------creating the range-----------------------//
 	std::cout << std::endl << line << "creating the range" << line << std::endl << std::endl;
 	Span sp2 = Span(10000);
 
@@ -55,7 +55,7 @@ int main()
 		std::cout << fl.what() << std::endl;
 	}
 
-//----------------finding shortest and longest spans-----------------//
+	//----------------finding shortest and longest spans-----------------//
 	std::cout << std::endl << line << "finding shortest and longest spans" \
 		<< line << std::endl << std::endl;
 	try {
@@ -71,7 +71,7 @@ int main()
 		std::cout << fl.what() << std::endl;
 	}
 
-//-----------------------testing the span exception---------------------//
+	//-----------------------testing the span exception---------------------//
 	std::cout << std::endl << line << "testing the span exception" << line  << std::endl << std::endl;
 	try {
 		sp2.addRange(5);
