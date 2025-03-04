@@ -53,12 +53,20 @@ int Span::dice()
 }
 
 size_t Span::shortestSpan() {
-	if (lst.size() == 0 || lst.size() == 1) {
+	if (lst.size() < 2) {
 		throw NotEnoughNumbers();
 	}
+	
 	if (!std::is_sorted(lst.begin(), lst.end()))
 		lst.sort();
 	
+	if (lst.size() == 2) {
+		long sp1 = lst.back();
+		long sp2 = lst.front();
+		size_t span = sp1 - sp2;
+		return span;
+	}
+
 	std::list<size_t> result(lst.size());
 
 	std::adjacent_difference(lst.begin(), lst.end(), result.begin());
@@ -67,7 +75,7 @@ size_t Span::shortestSpan() {
 }
 
 size_t Span::longestSpan() {
-	if (lst.size() == 0 || lst.size() == 1) {
+	if (lst.size() < 2) {
 		throw NotEnoughNumbers();
 	}
 	if (!std::is_sorted(lst.begin(), lst.end()))
