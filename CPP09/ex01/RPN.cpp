@@ -39,18 +39,19 @@ void RPN::check_input(int argc, char **argv, std::string *arg) {
 void RPN::calculate(std::string arg) {
 	std::stack<int> stack;
 	
-	//std::cout << arg << std::endl; // delete
-
 	for (char elem : arg) {
 		if (std::isdigit(elem)) {
-			//std::cout << stack.size() << std::endl;
 			stack.push(elem - '0');
 		}
 		else if (!std::isdigit(elem)) {
-			arithmetic_operation(stack, elem);
+			try {
+				arithmetic_operation(stack, elem);
+			}
+			catch (...) {
+				throw;
+			}
 		}
 	}
-	//std::cout << stack.size() << std::endl;
 	std::cout << stack.top() << std::endl;
 }
 
@@ -80,6 +81,8 @@ void RPN::arithmetic_operation(std::stack<int> & stack, char elem) {
 		stack.push(temp);
 		break;
 		case 47: // /
+		if (stack.top() == 0)
+			throw InputError();
 		temp = stack.top();
 		stack.pop();
 		temp = stack.top() / temp;

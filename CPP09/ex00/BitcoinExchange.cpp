@@ -166,7 +166,6 @@ void BitcoinExchange::modify_line(void) {
 		}
 		std::string price_str = database_line.substr(11, database_line.size() - 11);
 		price = std::stof(price_str);
-		//delete &price_str; do we need?
 		amount = std::stof(line_divided[1]);
 	}
 	catch (...) {
