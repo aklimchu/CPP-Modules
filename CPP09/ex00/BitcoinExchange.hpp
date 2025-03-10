@@ -4,6 +4,8 @@
 #include <fstream>
 #include <deque>
 #include <limits>
+#include <iomanip> // for std::fixed and std::setprecision
+#include <cmath> // for fmod
 
 class BitcoinExchange {
 	public:
@@ -92,4 +94,5 @@ class BitcoinExchange {
 		static void check_amount(std::string str);
 		static void modify_line(void);
 		static std::string find_previous_line(void);
+		static int calculatePrecision(double num);
 };

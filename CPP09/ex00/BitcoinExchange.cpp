@@ -165,14 +165,23 @@ void BitcoinExchange::modify_line(void) {
 			std::cout << line_divided[0] << "=>" << line_divided[1] << " = ";
 		}
 		std::string price_str = database_line.substr(11, database_line.size() - 11);
-		price = std::stof(price_str);
-		amount = std::stof(line_divided[1]);
+		price = std::stod(price_str);
+		amount = std::stod(line_divided[1]);
 	}
 	catch (...) {
 		throw;
 	}
 
-	std::cout << price * amount << std::endl;
+	double result;
+	try {
+		result = price * amount;
+	}
+	catch (...) {
+		throw TooLarge();
+	}
+
+	std::cout << std::fixed << std::setprecision(calculatePrecision(result)) << \
+		result << std::endl;
 }
 
 std::string BitcoinExchange::find_previous_line(void) {
@@ -206,3 +215,15 @@ void BitcoinExchange::closeStreams() {
         database_stream.close();
     }
 }
+
+/* int BitcoinExchange::calculatePrecision(double num) {
+	int count = 0;
+
+	while (std::fmod(num, 1.0) != 0.0) {
+        num *= 10;
+        count++;
+        if (count > 15) break;
+    }
+	return count;
+} */
+// convert to string and calculate the number of decimals?
