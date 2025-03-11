@@ -11,16 +11,16 @@ This repository contains all **C++ modules (CPP00 - CPP08)** from the **Hive Sch
 
 | 📦 Module | Topics Covered |
 |-----------|---------------|
-| **CPP00** | Namespace, I/O Streams, Memory Allocation, Classes |
-| **CPP01** | Pointers, References, Memory Management, File Streams |
-| **CPP02** | Fixed-Point Arithmetic, Overloading, Orthodox Canonical Form |
-| **CPP03** | Inheritance, Polymorphism, Abstract Classes |
-| **CPP04** | Subtype Polymorphism, Type Identification, Exceptions |
-| **CPP05** | Exceptions Handling, Custom Exception Classes |
-| **CPP06** | Type Conversions, Casts, Implicit vs. Explicit Conversion |
-| **CPP07** | Templates, Function Templates, Class Templates |
-| **CPP08** | Standard Template Library (STL), Containers, Iterators, Algorithms |
-| **CPP09** | STL Algorithms, Sorting, Searching, Custom Algorithm Implementation |
+| CPP00 | Namespace, I/O Streams, Memory Allocation, Classes |
+| CPP01 | Pointers, References, Memory Management, File Streams |
+| CPP02 | Fixed-Point Arithmetic, Overloading, Orthodox Canonical Form |
+| CPP03 | Inheritance, Polymorphism, Abstract Classes |
+| CPP04 | Subtype Polymorphism, Type Identification, Exceptions |
+| CPP05 | Exceptions Handling, Custom Exception Classes |
+| CPP06 | Type Conversions, Casts, Implicit vs. Explicit Conversion |
+| CPP07 | Templates, Function Templates, Class Templates |
+| CPP08 | Standard Template Library (STL), Containers, Iterators, Algorithms |
+| CPP09 | STL Algorithms, Sorting, Searching, Custom Algorithm Implementation |
 
 ---
 
