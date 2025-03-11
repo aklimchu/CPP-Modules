@@ -90,16 +90,59 @@ void PmergeMe::v_sort_smaller(std::vector<int> & v) {
 	}
 }
 
+std::vector<size_t> PmergeMe::v_generate_indices(size_t n) {
+    std::vector<size_t> jacobsthal_indices;
+    size_t j1 = 1, j2 = 1;
+    jacobsthal_indices.push_back(1);
+
+    while (j2 < n) {
+        jacobsthal_indices.push_back(j2);
+        size_t next = j2 + 2 * j1;
+        j1 = j2;
+        j2 = next;
+    }
+
+    if (jacobsthal_indices.back() != n) {
+        jacobsthal_indices.push_back(n);
+    }
+
+    std::vector<size_t> all_indices;
+    for (size_t i = 1; i <= n; ++i) {
+        all_indices.push_back(i);
+    }
+
+    std::vector<size_t> final_indices;
+
+    final_indices.insert(final_indices.end(), jacobsthal_indices.begin(), jacobsthal_indices.end());
+
+    for (size_t i : all_indices) {
+        if (std::find(jacobsthal_indices.begin(), jacobsthal_indices.end(), i) == jacobsthal_indices.end()) {
+            final_indices.push_back(i);
+        }
+    }
+
+    return final_indices;
+}
+
 void PmergeMe::v_binary_insertion(std::vector<int> & v, std::vector<int> & larger_elements) {
+	size_t n = larger_elements.size();
+	std::vector<bool> inserted(n, false);
+	std::vector<size_t> final_indices = PmergeMe::v_generate_indices(larger_elements.size());
+	
 	std::vector<int>::iterator itl = larger_elements.begin();
-	std::vector<int>::iterator itel = larger_elements.end();
 	std::vector<int>::iterator mid;
 	std::vector<int>::iterator prev_max_mid;
 	std::vector<int>::iterator prev_min_mid;
 	size_t subrange;
 	int prev_comp_larger;
 
-	while (itl != itel) {
+	for (size_t i = 0; i < final_indices.size(); i++) {
+        size_t idx = final_indices[i] - 1;
+        if (idx >= n || inserted[idx]) continue;
+
+		itl = larger_elements.begin() + idx;
+		inserted[idx] = true;
+
 		prev_comp_larger = -1;
 		if (v.size() % 2)
 			mid = v.begin() + v.size() / 2;
@@ -141,7 +184,6 @@ void PmergeMe::v_binary_insertion(std::vector<int> & v, std::vector<int> & large
 				break;
 			}
 		}
-		itl++;
 	}
 }
 
@@ -213,17 +255,60 @@ void PmergeMe::lst_sort_smaller(std::list<int> & lst) {
 	}
 }
 
+std::list<size_t> PmergeMe::lst_generate_indices(size_t n) {
+    std::list<size_t> jacobsthal_indices;
+    size_t j1 = 1, j2 = 1;
+    jacobsthal_indices.push_back(1);
+
+    while (j2 < n) {
+        jacobsthal_indices.push_back(j2);
+        size_t next = j2 + 2 * j1;
+        j1 = j2;
+        j2 = next;
+    }
+
+    if (jacobsthal_indices.back() != n) {
+        jacobsthal_indices.push_back(n);
+    }
+
+    std::list<size_t> all_indices;
+    for (size_t i = 1; i <= n; ++i) {
+        all_indices.push_back(i);
+    }
+
+    std::list<size_t> final_indices;
+
+    final_indices.insert(final_indices.end(), jacobsthal_indices.begin(), jacobsthal_indices.end());
+
+    for (size_t i : all_indices) {
+        if (std::find(jacobsthal_indices.begin(), jacobsthal_indices.end(), i) == jacobsthal_indices.end()) {
+            final_indices.push_back(i);
+        }
+    }
+
+    return final_indices;
+}
+
 void PmergeMe::lst_binary_insertion(std::list<int> & lst, \
 	std::list<int> & larger_elements) {
+	size_t n = larger_elements.size();
+	std::list<bool> inserted(n, false);
+	std::list<size_t> final_indices = PmergeMe::lst_generate_indices(larger_elements.size());
+	
 	std::list<int>::iterator itl = larger_elements.begin();
-	std::list<int>::iterator itel = larger_elements.end();
 	std::list<int>::iterator mid;
 	std::list<int>::iterator prev_max_mid;
 	std::list<int>::iterator prev_min_mid;
 	size_t subrange;
 	int prev_comp_larger;
 
-	while (itl != itel) {
+	for (size_t i = 0; i < final_indices.size(); i++) {
+        size_t idx = *std::next(final_indices.begin(), i) - 1;
+        if (idx >= n || *std::next(inserted.begin(), idx)) continue;
+
+		itl = std::next(larger_elements.begin(), idx);
+		*std::next(inserted.begin(), idx) = true;
+
 		prev_comp_larger = -1;
 		if (lst.size() % 2)
 			mid = std::next(lst.begin(), lst.size() / 2);
@@ -265,7 +350,6 @@ void PmergeMe::lst_binary_insertion(std::list<int> & lst, \
 				break;
 			}
 		}
-		itl++;
 	}
 }
 

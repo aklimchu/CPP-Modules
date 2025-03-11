@@ -5,6 +5,7 @@
 #include <list>
 #include <cmath> // for std::pow()
 #include <chrono> // for system clock
+#include <algorithm> // std::find
 
 class PmergeMe {
 	public:
@@ -29,6 +30,7 @@ class PmergeMe {
 		static void v_breaking_into_two(std::vector<int> & v, \
 			std::vector<int> & larger_elements);
 		static void v_sort_smaller(std::vector<int> & v);
+		static std::vector<size_t> v_generate_indices(size_t n);
 		static void v_binary_insertion(std::vector<int> & v, \
 			std::vector<int> & larger_elements);
 
@@ -38,6 +40,7 @@ class PmergeMe {
 		static void lst_breaking_into_two(std::list<int> & lst, \
 			std::list<int> & larger_elements);
 		static void lst_sort_smaller(std::list<int> & lst);
+		static std::list<size_t> lst_generate_indices(size_t n);
 		static void lst_binary_insertion(std::list<int> & lst, \
 			std::list<int> & larger_elements);
 
