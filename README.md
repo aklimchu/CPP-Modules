@@ -1,30 +1,45 @@
-# 🚀 CPP Module 00  
+# 🚀 CPP Modules (CPP00-CPP09) 
 
 ---
 
 ## 📌 Introduction 
-This project is the first module of the C++ Piscine at 42. It introduces fundamental C++ concepts, including basic syntax, memory allocation, and the differences between C and C++. The goal is to get comfortable with the basics of C++ while following best coding practices.
+This repository contains all **C++ modules (CPP00 - CPP08)** from the **Hive School C++ Piscine**. Each module progressively introduces key **C++ programming concepts**, ranging from **basic syntax** to **advanced object-oriented programming, templates, and STL**.
 
 ---
 
-## 📚 Topics Covered
+## 📚 Modules Overview
 
-- I/O Streams (cin, cout)
-- Keywords: namespace, class, new, delete
-- Memory allocation and deallocation
-- Differences between C and C++
-- Understanding header files and compilation
+| 📦 Module | Topics Covered |
+|-----------|---------------|
+| **CPP00** | Namespace, I/O Streams, Memory Allocation, Classes |
+| **CPP01** | Pointers, References, Memory Management, File Streams |
+| **CPP02** | Fixed-Point Arithmetic, Overloading, Orthodox Canonical Form |
+| **CPP03** | Inheritance, Polymorphism, Abstract Classes |
+| **CPP04** | Subtype Polymorphism, Type Identification, Exceptions |
+| **CPP05** | Exceptions Handling, Custom Exception Classes |
+| **CPP06** | Type Conversions, Casts, Implicit vs. Explicit Conversion |
+| **CPP07** | Templates, Function Templates, Class Templates |
+| **CPP08** | Standard Template Library (STL), Containers, Iterators, Algorithms |
 
 ---
 
 ## 📂 Project Structure
 ```bash
-CPP00/
-│── ex00/
-│── ex01/
+CPP-Modules/
+│── CPP00/
+│── CPP01/
+│── CPP02/
+│── CPP03/
+│── CPP04/
+│── CPP05/
+│── CPP06/
+│── CPP07/
+│── CPP08/
+│── CPP09/
+│── README.md
 ```
 
-Each exercise contains a separate task designed to reinforce the module's concepts.
+Each module contains multiple exercises (ex00, ex01, etc.), focusing on specific **C++ concepts** and **best practices**.
 
 ## ⚙️ Compilation & Execution 
 To compile a specific exercise, navigate to its directory and run:
@@ -32,3 +47,11 @@ To compile a specific exercise, navigate to its directory and run:
 make
 ./<executive_name>
 ```
+
+## ⚙️ Learning Outcomes 
+By working through these modules, I archived the following:
+✅ Mastered **C++ syntax and fundamental concepts**
+✅ Gained a **deep understanding of OOP** (encapsulation, inheritance, polymorphism)
+✅ Worked with **templates and generic programming**
+✅ Explored the **Standard Template Library (STL)**
+✅ Improved **problem-solving skills** in C++
