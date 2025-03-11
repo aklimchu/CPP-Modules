@@ -20,6 +20,7 @@ This repository contains all **C++ modules (CPP00 - CPP08)** from the **Hive Sch
 | **CPP06** | Type Conversions, Casts, Implicit vs. Explicit Conversion |
 | **CPP07** | Templates, Function Templates, Class Templates |
 | **CPP08** | Standard Template Library (STL), Containers, Iterators, Algorithms |
+| **CPP09** | STL Algorithms, Sorting, Searching, Custom Algorithm Implementation |
 
 ---
 
