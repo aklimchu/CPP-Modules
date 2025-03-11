@@ -5,7 +5,7 @@
 #include <deque>
 #include <limits>
 #include <iomanip> // for std::fixed and std::setprecision
-#include <cmath> // for fmod
+#include <string> // for to_string
 
 class BitcoinExchange {
 	public:
@@ -95,4 +95,5 @@ class BitcoinExchange {
 		static void modify_line(void);
 		static std::string find_previous_line(void);
 		static int calculatePrecision(double num);
+		static int all_next_zeros(std::string str, int start);
 };

@@ -114,7 +114,7 @@ void BitcoinExchange::check_date(std::string str) {
 		if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
 			throw BadInput();
 		
-		if (((month == 2 || year % 4 == 0) && day > 29) || \
+		if (((month == 2 && year % 4 == 0) && day > 29) || \
 			(month == 2 && day > 28))
 			throw BadInput();
 
@@ -129,7 +129,7 @@ void BitcoinExchange::check_amount(std::string str) {
         amount = std::stof(str, &pos);
 
         if (pos != str.size())
-            throw BadInput();
+			throw BadInput();
 	}
 	catch (...) {
 		throw BadInput();
@@ -216,14 +216,32 @@ void BitcoinExchange::closeStreams() {
     }
 }
 
-/* int BitcoinExchange::calculatePrecision(double num) {
-	int count = 0;
+int BitcoinExchange::calculatePrecision(double num) {
+	std::string str = std::to_string(num);
+	
+	int i = 0;
 
-	while (std::fmod(num, 1.0) != 0.0) {
-        num *= 10;
-        count++;
-        if (count > 15) break;
-    }
+	while (str[i] && str[i] != '.')
+		i++;
+	if (str[i])
+		i++;
+	int count = 0;
+	while (str[i] && str[i + 1] && str[i + 1] != 'f'  && str[i + 1] != 'F' && \
+		!all_next_zeros(str, i)) {
+		i++;
+		count++;
+	}
 	return count;
-} */
-// convert to string and calculate the number of decimals?
+}
+
+int BitcoinExchange::all_next_zeros(std::string str, int start) {
+	int i = start;
+	
+	while (str[i]) {
+		if (str[i] != '0') {
+			return 0;
+		}
+		i++;
+	}
+	return 1;
+}
