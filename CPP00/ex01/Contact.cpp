@@ -44,3 +44,4 @@ std::string Contact::getField(int field) const {
 	}
 	return (nullptr);
 }
+
