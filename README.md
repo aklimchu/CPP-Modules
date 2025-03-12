@@ -3,7 +3,7 @@
 ---
 
 ## 📌 Introduction 
-This repository contains all **C++ modules (CPP00 - CPP08)** from the **Hive School C++ Piscine**. Each module progressively introduces key **C++ programming concepts**, ranging from **basic syntax** to **advanced object-oriented programming, templates, and STL**.
+This repository contains all **C++ modules (CPP00 - CPP09)** from the **Hive School C++ Piscine**. Each module progressively introduces key **C++ programming concepts**, ranging from **basic syntax** to **advanced object-oriented programming, templates, and STL**.
 
 ---
 
